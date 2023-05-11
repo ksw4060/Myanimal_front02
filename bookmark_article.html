@@ -14,7 +14,7 @@
     <script>
         // 로그인 기능 완료시 url 수정 http://127.0.0.1:8000/articles/bookmarks/
         fetch("http://127.0.0.1:8000/articles/").then(res => res.json()).then(data => {
-            let rows = data['articles']
+            let rows = data
             $('#article-box').empty()
             rows.forEach((a) => {
                 let title = a['article_title']

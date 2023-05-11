@@ -20,7 +20,7 @@
                 url: "http://127.0.0.1:8000/articles/",
                 data: {},
                 success: function (response) {
-                    let rows = response['articles']
+                    let rows = response
                     for (let i = 0; i < rows.length; i++) {
                         let title = rows[i]['article_title']
                         let content = rows[i]['article_content']
@@ -60,7 +60,7 @@
                 }
             })
         }
-
+     
 
     </script>
 
