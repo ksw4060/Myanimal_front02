@@ -5,6 +5,7 @@
 async function Login() {
     const account = document.getElementById("account").value;
     const password = document.getElementById("password").value;
+    console.log(account, password)
 
     const response = await fetch(`${backend_base_url}/users/login/`, {
         headers: {
@@ -34,6 +35,8 @@ async function Login() {
                 ).slice(-2);
             }).join('')
         );
+        console.log(jsonPayload)
+
         localStorage.setItem("payload", jsonPayload);
         location.replace('index.html')
 
