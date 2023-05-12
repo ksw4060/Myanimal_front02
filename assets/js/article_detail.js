@@ -125,7 +125,7 @@ async function loadComments(article_id) {
                             <a href="#" class="btn btn-secondary btn-sm me-md-2">댓글 수정</a>
                             <a href="#" class="btn btn-secondary btn-sm">댓글삭제</a>
                         </div>
-                        <p class="card-text"><small class="text-muted">등록시간</small></p>
+                        <p class="card-text"><small class="text-muted">${comment.comment_created_at}</small></p>
                     </div>
                 </div>
             </div>
