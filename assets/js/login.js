@@ -1,16 +1,21 @@
+const frontend_base_url = "http://127.0.0.1:5000"
+const backend_base_url = "http://127.0.0.1:8000"
+
+
 //로그인
 async function Login() {
     const account = document.getElementById("account").value;
     const password = document.getElementById("password").value;
 
-    const response = await fetch(
-        `${backendBaseUrl}/users/api/token/`,
-        { 
+    const response = await fetch(`${backend_base_url}/users/login/`,{ 
             headers: {
                 'content-type': 'application/json'
             },
             method: 'POST',
-            body: JSON.stringify({"account": account, "password": password})
+            body: JSON.stringify({
+                "account": account, 
+                "password": password
+            })
         }
     )
     const response_json = await response.json()
@@ -41,3 +46,33 @@ async function Login() {
     }
 }
 
+// // 회원탈퇴 (미완성)
+// async function withdrawal() {
+//     var delConfirm = confirm("정말 계정 비활성화를 진행하시겠습니까?")
+//     if (delConfirm) {
+//     const response = await fetch(`${backend_base_url}/users/withdraw/<int:user_id>/`, {
+//         method: "DELETE",
+//         headers: {
+//         Accept: "application/json",
+//         "Content-type": "application/json",
+//         "Authorization": "Bearer " + localStorage.getItem("access")
+//         }
+//     })
+
+//     withdrawal_json = await response.json()
+//     if (response.status === 200) {
+//     alert(withdrawal_json["message"])
+//     localStorage.removeItem("payload")
+//     localStorage.removeItem("access")
+//     localStorage.removeItem("refresh")
+//     location.replace('user.html')    }
+//     }
+// }
+
+
+// 로그아웃
+async function handlelogout(){
+    localStorage.removeItem("access")
+    localStorage.removeItem("refresh")
+    localStorage.removeItem("payload")
+}
