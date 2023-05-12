@@ -59,3 +59,49 @@ async function ArticleDelete() {
         alert("권한이 없습니다.")
     }
 }
+
+
+
+// 댓글 작성
+
+async function save_comment() {
+    const comment = document.getElementById("comment").value
+    
+    const token = localStorage.getItem("access")
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/`, {
+        headers: {
+            "content-type":"application/json",
+            "Authorization": "Bearer " + token,
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            "comment": comment,
+            
+        })
+    })
+
+    if (response.status == 201) {
+        alert("댓글 작성 완료")
+        location.reload();
+    } else if (comment == '') {
+        alert("댓글을 입력해 주세요.")
+    }
+
+}
+
+// 댓글 불러오기(미완)
+
+async function loadComments() {
+    const response = await fetch(`${backend_base_url}/${article_id}/comment/`);
+    const comments = await response.json();
+    console.log(comments)
+  
+    const commentList = document.getElementById('commnet-list');
+  
+  
+    comments.forEach((comments) => {
+      
+  });
+}
+

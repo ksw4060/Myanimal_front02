@@ -10,6 +10,8 @@
     <link href="/assets/css/article_detail.css" rel="stylesheet">
     <script src="/assets/js/article.js"></script>
     <script src="/assets/js/article_detail.js"></script>
+    <script src="/assets/js/comment.js"></script>
+
     <style> </style>
 </head>
 
@@ -53,89 +55,104 @@
             </div>
         </div>
     </nav>
+    <div id="article_detail">
+        <!-- 글제목, 수정&삭제 버튼 -->
+        <div class="maintexter">
 
-    <!-- 글제목, 수정&삭제 버튼 -->
-    <div class="maintexter">
+            <div class="card-body">
+                <div id="category">카테고리</div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">작성자 : <span id="author"></span></div>
+                <h1 id="article-title" class="card text-center"></h1>
+                <p class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    작성날짜 : <span id="article-created-at"></span>
+                </p>
 
-        <div class="card-body">
-            <div id="category">카테고리</div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">작성자 : <span id="author"></span></div>
-            <h1 id="article-title" class="card text-center"></h1>
-            <p class="d-grid gap-2 d-md-flex justify-content-md-end">
-                작성날짜 : <span id="article-created-at"></span>
-            </p>
-
-        </div>
-        <div class="card-body">
-            <a href="#" onclick="redirectUpdatePage()" class="btn btn-secondary me-md-2">수정하기</a>
-            <a href="#" onclick="ArticleDelete()" class="btn btn-secondary">삭제하기</a>
-        </div>
-
-    </div>
-
-    <div class="maintexter">
-
-        <img src="https://i.ibb.co/Ssm90Cq/4164335-1582361978747.gif" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 id="article-content" class="card-title">Card title</h5>
-
-            <p class="card-text"><small class="text-muted">마지막 수정 : <span id="article-updated-at"></span></small></p>
-            <!-- <p class="card-text">This is a wider card with supporting text below as a natural
-                lead-in to additional
-                content. This content is a little bit longer.</p> -->
-        </div>
-
-
-
-
-    </div>
-
-
-
-    <!-- 좋아요! -->
-    <div class="card text-center">
-        <a href="#" class="btn btn-secondary">좋아요 5개</a>
-    </div>
-
-    <div class="card text-center">
-        <h2>댓글 보러가기(0)</h2>
-    </div>
-
-    <!-- 댓글 예시 -->
-    <div class="card text-center">
-        <div class="card-header">
-            <a>(아이콘)username</a>
-
-        </div>
-        <div class="card-body" style="max-width: 1000px;">
-            <div class="row g-5">
-                <!-- 유저 프로필 사진 -->
-                <div class="col-md-4">
-                    <img src="https://i.ibb.co/Ssm90Cq/4164335-1582361978747.gif" class="img-fluid rounded-start"
-                        alt="...">
-                </div>
-                <!-- 댓글 제목과 내용 입력-->
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h6 class="card-title">Card title</h6>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-
-                    </div>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="#" class="btn btn-secondary btn-sm me-md-2">댓글 수정</a>
-                        <a href="#" class="btn btn-secondary btn-sm">댓글삭제</a>
-                    </div>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-
-
-
-                </div>
-
+            </div>
+            <div class="card-body">
+                <a href="#" onclick="redirectUpdatePage()" class="btn btn-secondary me-md-2">수정하기</a>
+                <a href="#" onclick="ArticleDelete()" class="btn btn-secondary">삭제하기</a>
             </div>
 
         </div>
 
+        <div class="maintexter">
+
+            <img src="https://i.ibb.co/Ssm90Cq/4164335-1582361978747.gif" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 id="article-content" class="card-title">Card title</h5>
+
+                <p class="card-text"><small class="text-muted">마지막 수정 : <span id="article-updated-at"></span></small>
+                </p>
+                <!-- <p class="card-text">This is a wider card with supporting text below as a natural
+                lead-in to additional
+                content. This content is a little bit longer.</p> -->
+            </div>
+
+
+
+
+        </div>
+
+
+
+        <!-- 좋아요! -->
+        <div class="card text-center">
+            <a href="#" class="btn btn-secondary">좋아요 5개</a>
+        </div>
+
+        <!-- 댓글 작성 시작 -->
+        <div id="comment_area">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">댓글 작성</label>
+                <textarea class="form-control" id="comment" rows="3"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg" onclick="save_comment()">등록</button>
+        </div>
+        <!-- 댓글 작성 끝 -->
+        <div class="card text-center">
+            <h2>댓글 보러가기(0)</h2>
+        </div>
+
+
+
+        <!-- 댓글 예시 -->
+
+
+
+        <div id="commnet-list">
+            <div class="card text-center">
+                <div class="card-header">
+                    <a>(아이콘)username</a>
+
+                </div>
+                <div class="card-body" style="max-width: 1000px;">
+                    <div class="row g-5">
+                        <!-- 유저 프로필 사진 -->
+                        <div class="col-md-4" style ="width: 200px;">
+                            <img src="https://i.ibb.co/Ssm90Cq/4164335-1582361978747.gif"
+                                class="img-fluid rounded-start" alt="..." style ="width: 100px;">
+                        </div>
+                        <!-- 댓글 제목과 내용 입력-->
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-text">댓글 내용</p>
+
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="#" class="btn btn-secondary btn-sm me-md-2">댓글 수정</a>
+                                <a href="#" class="btn btn-secondary btn-sm">댓글삭제</a>
+                            </div>
+                            <p class="card-text"><small class="text-muted">등록시간</small></p>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
     <!-- 하단 푸터 시작-->
     <div class="jumbotron text-center mt-5 mb-0">
