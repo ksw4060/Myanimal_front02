@@ -72,10 +72,10 @@
             <div class="signup-form-control" style="height: 7vh;"><label for="nickname"></label><input type="text"
                     name="nickname" id="nickname" placeholder="nickname"></div>
 
-            <div class="signup-form-control"><label for="profile_img">프로필 이미지</label><input type="file"
-                    name="profile_img" id="profile_img" placeholder="profile_img"></div>
-            <div class="signup-form-control"><label for="categories">반려동물이 있으신가요?</label><select id="categories"
-                    name="categories"></div>
+            <div class="signup-form-control mb-3" ><label for="formFile" class="form-label">프로필 이미지</label><input class="form-control" type="file"
+                    name="profile_img" id="profile_img" placeholder="profile_img" style="border:1px solid gray"></div>
+            <div class="signup-form-control"><label for="categories">나의 반려동물 (또는 관심) </label><select id="categories"
+                    name="categories" style="margin-left : 10px; width: 100px;"></div>
             <option selected>-----</option>
             <option value="cat">고양이</option>
             <option value="dog">강아지</option>
@@ -85,10 +85,11 @@
             <option value="stone">애완돌</option>
             <option value="turtle">거북이</option>
             </select>
-            <div>
-                <button type="button" class="signup-button" onclick="handleSignupButton()">회원가입</button>
+            <div class="signup-button">
+                <button type="button" onclick="handleSignupButton()">회원가입</button>
             </div>
-            <div>
+            <hr/>
+            <div class = "buttons">
                 <button href="login.html">로그인</button>
                 <button href="reset_password.html">비밀번호 재설정</button>
                 

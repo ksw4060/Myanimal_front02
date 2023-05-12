@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +15,7 @@
     <!-- JS -->
     <script src="/assets/js/login.js"></script>
 </head>
+
 <body>
     <!-- 상단 네비게이션바 -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255, 238, 217);">
@@ -54,17 +56,24 @@
             </div>
         </div>
     </nav>
-    <form>
-        <div><label for="account">ID</label>
-        <input type="text" name="account" id="account" placeholder="account"></div>
-        <div><label for="password">password</label><input type="password" name="password" id="password" placeholder="password"></div> 
-        <button type="button" class = "login-button" onclick="Login()">로그인</button>
-        <div>
-            <a class="a_btn" href="signup.html"> 회원가입 </a>
-            <a class="a_btn" href="reset_password.html"> 비밀번호 재설정 </a>
-        </div>
-    </form>
-
+    <div class="login-form">
+        <form>
+            <div class="login-form-control" style="height: 7vh;"><label for="account"></label>
+                <input type="text" name="account" id="account" placeholder="ID">
+            </div>
+            <div class="login-form-control" style="height: 7vh;"><label for="password"></label><input type="password" name="password"
+                    id="password" placeholder="password"></div>
+            <div class="login-button">
+                <button type="button"  onclick="Login()">로그인</button>
+            </div>
+            <hr/>
+            <div class = "buttons"> 
+                <button href="signup.html"> 회원가입 </button>
+                <button href="reset_password.html"> 비밀번호 재설정 </button>
+            </div>
+        </form>
+    </div>
 
 </body>
+
 </html>
