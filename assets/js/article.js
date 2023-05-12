@@ -35,7 +35,7 @@ async function save_article() {
 
 
 // 글 수정
-async function UpdateArticle() {
+async function UpdateArticle(article_id) {
 
     const response = await fetch(`${backend_base_url}/article/${article_id}`, {
         headers: {

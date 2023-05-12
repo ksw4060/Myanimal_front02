@@ -24,7 +24,6 @@ async function Login() {
     localStorage.setItem("refresh", response_json.refresh);
 
     if (response.status === 200) {
-        alert("로그인 성공");
 
         const base64Url = response_json.access.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -35,7 +34,11 @@ async function Login() {
                 ).slice(-2);
             }).join('')
         );
+        console.log(jsonPayload)
+
         localStorage.setItem("payload", jsonPayload);
+        alert("로그인 성공");
+        
         location.replace('index.html')
 
     } else if (response.status === 400 && response_json["non_field_errors"]) {

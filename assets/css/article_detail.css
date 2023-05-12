@@ -72,7 +72,7 @@
 
 }
 
-img:hover {
+.card-img-top:hover {
     /* 이미지파일 전체 호버기능 */
     width: 101%;
     /* 사진크기 조절 */

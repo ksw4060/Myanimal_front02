@@ -1,7 +1,8 @@
 .signup-form{
     border: 1px solid #FFEED9;
     border-radius: 10px;
-    width: 50vw;
+    width: 70vw;
+    max-width: 500px;
     height: auto;
     margin: 10vh auto;
     padding: 10px;
@@ -11,7 +12,8 @@
 .signup-form-control{
     margin: 30px auto;
     padding: 10px auto;
-    width: 40vw;
+    width: 90%;
+
 }
 
 .signup-form-control input{

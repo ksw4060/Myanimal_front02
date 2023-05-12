@@ -111,7 +111,7 @@ window.onload = async function loadArticles() {
           </div>
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
-              <a class="btn me-2 btn_org" href="#">보러가기</a>
+              <a class="btn me-2 btn_org" href="article_detail.html?id=${article.id}">보러가기</a>
             </div>
           </div>
         </div>
