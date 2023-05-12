@@ -24,30 +24,30 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link btn me-2 btn_org" href="./create_article.html">글쓰기</a></li>
                 </ul>
-                <a href="/" class="me-auto navbar-brand"><img src="./image/집집집메인로고.png" alt="상단로고" width="150">집사는 집사하느라
+                <a href="/" class="me-auto navbar-brand"><img src="./assets/images/집집집메인로고.png" alt="상단로고"
+                        width="150">집사는 집사하느라
                     집못사</a>
                 <form class="form-inline my-2 my-lg-0">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link btn me-2 btn_org" href="./login.html"> 로그인 <span
+                            <!-- <a class="nav-link btn me-2 btn_org" href="./login.html"> 로그인 <span
                                     class="sr-only"></span></a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link btn me-2 btn_gr" href="./signup.html"> 회원가입 <span
-                                    class="sr-only"></span></a>
+                                    class="sr-only"></span></a> -->
                         </li>
                     </ul>
-                    <ul class="navbar-nav mr-auto">
+                    <ul id="navbar-right" class="navbar-nav mr-auto">
                         <li class="nav-item disable">
-                            <span class="nav-link">
-                                <!-- 회원일 경우 이메일 출력-->
-                                <!-- <div id="intro"> 안녕하세요!</div> -->
-                            </span>
+                            <!-- 로그인시 회원 로그인 정보를 보여줌 -->
+                            <a id="intro" class="nav-link btn me-2 btn_org" href="/"></a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link btn me-2 btn_org" href="/"> 마이페이지 </a>
-                        <li class="nav-item active">
-                            <a class="nav-link btn me-2 btn_gr" button onclick="handleLogout()"> 로그아웃 </a>
+                        <!-- 로그인과 회원가입 버튼 -->
+                        <li class="nav-item disable"><a id="login-btn" class="nav-link btn me-2 btn_org"
+                                href="./login.html"> 로그인 <span class="sr-only"></span></a></li>
+                        <li class="nav-item disable"><a id="signup-btn" class="nav-link btn me-2 btn_gr"
+                                href="./signup.html"> 회원가입 <span class="sr-only"></span></a></li>
                         </li>
                     </ul>
             </div>
@@ -144,14 +144,19 @@
                                 GITHUB</a>
                         </p><br>
                         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
-                        <a href="/"><img src="./image/집집집메인로고.png" alt="상단로고" width="150"></a>
+                        <a href="/"><img src="./assets/images/집집집메인로고.png" alt="상단로고" width="150"></a>
                     </div>
                 </div>
             </div>
         </footer>
     </div>
     <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/login.js"></script>
+    <script src="/assets/js/signup.js"></script>
+    <script src="/assets/js/reset_password.js"></script>
+    <script src="/assets/js/nav.js"></script>
     <script src="/assets/js/index.js"></script>
+
 </body>
 
 <!-- # -->
