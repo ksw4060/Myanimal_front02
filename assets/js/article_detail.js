@@ -3,6 +3,7 @@
 window.onload = () => {
     const urlParams = new URLSearchParams(window.location.search).get('id');
     ArticleDetail(urlParams);
+    loadComments(urlParams);
 }
 
 const article_id = new URLSearchParams(window.location.search).get('id');
@@ -38,7 +39,7 @@ async function ArticleDetail(article_id) {
 // 수정 페이지로 이동
 function redirectUpdatePage() {
     window.location.href = `update_article.html?id=${article_id}`;
-  }
+}
 
 
 // 글 삭제
@@ -55,7 +56,7 @@ async function ArticleDelete() {
     if (response.status === 204) {
         alert("삭제 완료!")
         location.replace('index.html')
-    }else{
+    } else {
         alert("권한이 없습니다.")
     }
 }
@@ -66,18 +67,18 @@ async function ArticleDelete() {
 
 async function save_comment() {
     const comment = document.getElementById("comment").value
-    
+
     const token = localStorage.getItem("access")
 
     const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/`, {
         headers: {
-            "content-type":"application/json",
+            "content-type": "application/json",
             "Authorization": "Bearer " + token,
         },
         method: 'POST',
         body: JSON.stringify({
             "comment": comment,
-            
+
         })
     })
 
@@ -92,16 +93,45 @@ async function save_comment() {
 
 // 댓글 불러오기(미완)
 
-async function loadComments() {
-    const response = await fetch(`${backend_base_url}/${article_id}/comment/`);
+async function loadComments(article_id) {
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/`);
     const comments = await response.json();
     console.log(comments)
-  
-    const commentList = document.getElementById('commnet-list');
-  
-  
-    comments.forEach((comments) => {
-      
-  });
+
+    
+
+
+    comments.forEach((comment) => {
+        const commentList = document.getElementById('comment-list');
+        commentList.insertAdjacentHTML ('beforeend',`
+        
+        <div class="card-header">
+                <a>${comment.user}</a>
+            </div>
+            <div class="card-body" style="max-width: 1000px;">
+                <div class="row g-5">
+                    <!-- 유저 프로필 사진 -->
+                    <div class="col-md-4" style="width: 200px;">
+                        <img src="https://i.ibb.co/Ssm90Cq/4164335-1582361978747.gif" class="img-fluid rounded-start"
+                            alt="..." style="width: 100px;">
+                    </div>
+                    <!-- 댓글 제목과 내용 입력-->
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-text">${comment.comment}</p>
+
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="#" class="btn btn-secondary btn-sm me-md-2">댓글 수정</a>
+                            <a href="#" class="btn btn-secondary btn-sm">댓글삭제</a>
+                        </div>
+                        <p class="card-text"><small class="text-muted">등록시간</small></p>
+                    </div>
+                </div>
+            </div>
+        
+        
+        `);
+    });
 }
 
