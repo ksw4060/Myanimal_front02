@@ -97,6 +97,7 @@ window.onload = async function loadArticles() {
         articleCard.classList.add('col', 'mb-5');
         // 아래 html이 반복되어 입력됨
         // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
+        // 채연 : 넹 너무 기여워요 ㅠ 어케 이케 이쁘지 저 납치 해도 될까요? 물론 소진님을
         articleCard.innerHTML = `
         <div class="card h-100">
           <img class="card-img-top" src="${article.article_image ? article.article_image : './image/IMG_8257.jpg'}" alt="" />
