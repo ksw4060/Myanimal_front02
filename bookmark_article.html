@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>집사는 집사하느라 집못사</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="/css/index.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script>
+        // 로그인 기능 완료시 url 수정 http://127.0.0.1:8000/articles/bookmarks/
+        fetch("http://127.0.0.1:8000/articles/").then(res => res.json()).then(data => {
+            let rows = data
+            $('#article-box').empty()
+            rows.forEach((a) => {
+                let title = a['article_title']
+                        let content = a['article_content']
+                        let img = a['article_img']
+                        let category = a['category']
+                        let hearts = a['hearts']
+                        let bookmarks = a['bookmarks']
+                        let created_at = a['article_created_at']
+                        let updated_at = a['article_updated_at']
+                        let user = a['user']
+                        let id = a['id']
+
+                        let temp_html = `<div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- 포스트 이미지를 가져오는 곳-->
+                        <img class="card-img-top" src="${img}">
+                        <!-- 포스팅 카드가 보여지는 곳-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- 게시글 title-->
+                                <h5 class="fw-bolder">${title}</h5>
+                                <!-- 게시글 작성자-->
+                                <label for="" class="">${category}</label>
+                                <hr>
+                                <label for="" class="">${user}</label>
+                            </div>
+                        </div>
+                        <!-- 보러가기 버튼-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn me-2 btn_org"
+                                    href="http://127.0.0.1:8000/articles/${id}/">보러가기</a></div>
+                        </div>
+                    </div>
+                </div>`
+                $('#article-box').append(temp_html)
+
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 상단 네비게이션바 -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255, 238, 217);">
+        <div class="container px-4 px-lg-5">
+            <!-- {% if user.is_authenticated %} -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link btn me-2 btn_org" href="/post/create/">글쓰기</a></li>
+                </ul>
+                <a href="/" class="me-auto navbar-brand"><img
+                        src="https://file.notion.so/f/s/fbf88a29-f2ac-43c6-b8a5-12f518410898/%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png?id=0b6aa370-2c58-4e05-a450-1eb3181140bd&table=block&spaceId=24c771f9-c044-4d63-851f-660172d58cb7&expirationTimestamp=1683808290387&signature=XevQ9_wayjz5Y2xSJzntNZi1X2KXwHljYZ31XqFR7C4&downloadName=%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png"
+                        alt="상단로고" width="150">집사는 집사하느라 집못사</a>
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link btn me-2 btn_org" href="{% url 'login'%}"> 로그인 <span
+                                    class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link btn me-2 btn_gr" href="{% url 'signup'%}"> 회원가입 <span
+                                    class="sr-only"></span></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item disable">
+                            <span class="nav-link">
+                                <!-- {{ user.username }}님 반갑습니다! -->
+                            </span>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link btn me-2 btn_org" href="{% url 'profile' %}"> 마이페이지 </a>
+                        <li class="nav-item active">
+                            <a class="nav-link btn me-2 btn_gr" href="/logout"> 로그아웃 </a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main">
+        <section>
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-6">
+                        <h3 class="mt-5">북마크 한 게시글 목록</h3>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <hr>
+    <div class="mycards">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div id="article-box" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <!-- {% for post in page_obj %} -->
+                <!--페이지 오브젝트에서 포스트를 불러오는 것-->
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- 포스트 이미지를 가져오는 곳-->
+                        <img class="card-img-top" src="{{ post.image.url }}" alt="..." />
+                        <!-- 포스팅 카드가 보여지는 곳-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- 게시글 title-->
+                                <h5 class="fw-bolder">{{ post.title }}</h5>
+                                <!-- 게시글 작성자-->
+                                <label for="" class="">{{ post.region }}</label>
+                                <hr>
+                                <label for="" class="">{{ post.user }}</label>
+                            </div>
+                        </div>
+                        <!-- 보러가기 버튼-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn me-2 btn_org"
+                                    href="{% url 'post' id=post.id %}">보러가기</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <nav aria-label="Pagination">
+        <hr class="my-0" />
+        <ul class="pagination justify-content-center my-4">
+            <!-- 현재 페이지 이전의 페이지가 있는지 검토하는 함수,있다면 Ture값을 없으면 False값을 반환하여 Ture값일 경우 이전의 페이지 넘버를 보여줌-->
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            <!-- ?page=문은 흔히 URL 뒤에 ?뒤에 숫자가 붙는 쿼리 스트링(Query String)이라고 한다네요...-->
+            <li class="page-item disabled"><a class="page-link" href="#!">&laquo;</a></li>
+            <!-- 전체 페이지 범위를 반복하면서 각 페이지 번호에 대한 링크를 생성하는데 사용되며 현재페이지=active활성화시킴-->
+            <!--  num은 페이지네이터에서 돌고있는 페이지 번호, page_obj.number는 현재 요청된 페이지 번호, 즉 현재 페이지를 나타냄 -->
+            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+            <!-- 페이지 기준 -2개의 페이지와 +2개의 페이지 리스트를 보여주기 위함 -->
+            <li class="page-item"><a class="page-link" href="?page={{ num }}">2</a></li>
+            <!-- 다음 페이지가 있다면 >>버튼을 눌렀을때 다음페이지가 나타남-->
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            <li class="page-item disabled"><a class="page-link" href="#!">&raquo;</a></li>
+        </ul>
+    </nav>
+
+
+
+    <!-- 하단 푸터-->
+    <div class="jumbotron text-center mt-5 mb-0">
+        <footer class="py-5 bg-dark">
+            <h3 class="m-0 text-center text-white">달팽이키우기</h3>
+            <div class="container">
+                <div class="jumbotron text-center mt-5 mb-0">
+                    <div class="mem_list">
+                        <p class="m-0 text-center text-white">김성우 <a href="https://ksw4060.tistory.com/"
+                                class="m-0 text-center text-white" style="
+                            text-decoration:none">BLOG</a> / <a href="https://github.com/ksw406020230309"
+                                class="m-0 text-center text-white" style="text-decoration:none">GITHUB</a>
+                        </p>
+                        <p class="m-0 text-center text-white">서채연 <a href="https://chaeyami.tistory.com/"
+                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
+                                href="https://github.com/ChaeYami" class="m-0 text-center text-white"
+                                style="text-decoration:none">GITHUB</a></p>
+                        <p class="m-0 text-center text-white">이준영 <a href="https://beolog.tistory.com/"
+                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
+                                href="https://github.com/beo202202" class="m-0 text-center text-white"
+                                style="text-decoration:none">GITHUB</a></p>
+                        <p class="m-0 text-center text-white">정재준 <a href="https://bamtol-coding.tistory.com/"
+                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
+                                href="https://github.com/newstyle1443/drf_homework" class="m-0 text-center text-white"
+                                style="text-decoration:none">GITHUB</a></p>
+                        <p class="m-0 text-center text-white">박소진 <a
+                                href="https://right-otter-1b4.notion.site/Sparta-f505fc85ac5145fe9104a6e2abef444d"
+                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
+                                href="https://github.com/jinyjin7/MyAnimal/tree/main" class="m-0 text-center text-white"
+                                style="text-decoration:none">
+                                GITHUB</a>
+                        </p><br>
+                        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+                        <a href="/"><img
+                                src="https://file.notion.so/f/s/fbf88a29-f2ac-43c6-b8a5-12f518410898/%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png?id=0b6aa370-2c58-4e05-a450-1eb3181140bd&table=block&spaceId=24c771f9-c044-4d63-851f-660172d58cb7&expirationTimestamp=1683808290387&signature=XevQ9_wayjz5Y2xSJzntNZi1X2KXwHljYZ31XqFR7C4&downloadName=%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png"
+                                alt="상단로고" width="150"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
