@@ -6,21 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
+    <!-- JS -->
+    <script src="/assets/js/signup.js"></script>
+
 </head>
 
 <body>
     <h1>회원가입 페이지</h1>
     <form>
-        <label for="account">ID</label>
-        <input type="text" name="account" id="account" placeholder="account">
-        <label for="nickname">닉네임</label>
-        <input type="text" name="nickname" id="nickname" placeholder="nickname">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="email">
-        <label for="profile_img">프로필 이미지</label>
-        <input type="file" name="profile_img" id="profile_img" placeholder="profile_img">
-        <label for="categories">반려동물이 있으신가요?</label>
-        <select id="categories" name="categories">
+        <div><label for="account">ID</label>
+            <input type="text" name="account" id="account" placeholder="account"></div>
+        <div><label for="email">Email</label><input type="email" name="email" id="email" placeholder="email"></div>    
+        <div><label for="password">password</label><input type="password" name="password" id="password" placeholder="password"></div>    
+        
+        <div><label for="nickname">닉네임</label><input type="text" name="nickname" id="nickname" placeholder="nickname"></div>
+       
+        <div><label for="profile_img">프로필 이미지</label><input type="file" name="profile_img" id="profile_img" placeholder="profile_img"></div>
+        <div><label for="categories">반려동물이 있으신가요?</label><select id="categories" name="categories"></div>
+
             <option selected>-----</option>
             <option value="cat">고양이</option>
             <option value="dog">강아지</option>
@@ -30,8 +33,13 @@
             <option value="stone">애완돌</option>
             <option value="turtle">거북이</option>
         </select>
-        <button type="button">회원가입</button>
+        <button type="button" class = "signup-button" onclick="handleSignupButton()">회원가입</button>
+        <div>
+            <a class="a_btn" href="login.html"> 로그인 </a>
+            <a class="a_btn" href=""> 비밀번호 재설정 </a>
+        </div>
     </form>
 </body>
 
 </html>
+

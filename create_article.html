@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>집사는 집사하느라 집못사</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <link href="assets/css/index.css" rel="stylesheet">
+    <script src="assets/js/index.js"></script>
+
+    <!-- 이미지 미리보기 입니다 -->
+    <!-- <script type="text/javascript">
+        $(function () {
+            $("#myFile").on('change', function () {
+                readURL(this);
+            });
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        } -->
+    </script>
+    <!-- 작성 글 데이터 보내는 기능 -->
+    <script>
+        // function save_article() {
+        //     let title = $('#title').val()
+        //     let content = $('#content').val()
+        //     let category = $('#category').val()
+        //     let img = $('#img').attr('src')
+        //     let token = localStorage.getItem("access");
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: 'http://127.0.0.1:8000/articles/',
+        //         headers: {
+        //             "Authorization": "Bearer " + localStorage.getItem("access")
+        //         },
+        //         data: { article_title: title, article_content: content, article_img: img, category: category },
+        //         success: function (response) {
+        //             alert('글 게시 성공')
+        //             // 작성한 글 보이게 이동, 상세 보기 라던가 메인 페이지
+        //             window.location.reload()
+        //         }
+        //     })
+        // }
+
+
+        async function save_article() {
+            const title = document.getElementById("title").value
+            const content = document.getElementById("content").value
+            const category = document.getElementById("category").value
+            const img = document.getElementById("img").value
+            const token = localStorage.getItem("access")
+
+            const response = await fetch('http://127.0.0.1:8000/articles/', {
+                headers: {
+                    "content-type":"application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("access"),
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    "article_title": title,
+                    "article_content": content,
+                    "category": category,
+                    "article_img": img,
+                })
+            })
+            console.log()
+        }
+
+        
+    </script>
+
+</head>
+
+<body>
+    <!-- 상단 네비게이션바 -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255, 238, 217);">
+        <div class="container px-4 px-lg-5">
+            <!-- {% if user.is_authenticated %} -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link btn me-2 btn_org" href="/post/create/">글쓰기</a></li>
+                </ul>
+                <a href="/" class="me-auto navbar-brand"><img
+                        src="https://file.notion.so/f/s/fbf88a29-f2ac-43c6-b8a5-12f518410898/%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png?id=0b6aa370-2c58-4e05-a450-1eb3181140bd&table=block&spaceId=24c771f9-c044-4d63-851f-660172d58cb7&expirationTimestamp=1683808290387&signature=XevQ9_wayjz5Y2xSJzntNZi1X2KXwHljYZ31XqFR7C4&downloadName=%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png"
+                        alt="상단로고" width="150">집사는 집사하느라 집못사</a>
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link btn me-2 btn_org" href="{% url 'login'%}"> 로그인 <span
+                                    class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link btn me-2 btn_gr" href="{% url 'signup'%}"> 회원가입 <span
+                                    class="sr-only"></span></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item disable">
+                            <span class="nav-link">
+                                <!-- {{ user.username }}님 반갑습니다! -->
+                            </span>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link btn me-2 btn_org" href="{% url 'profile' %}"> 마이페이지 </a>
+                        <li class="nav-item active">
+                            <a class="nav-link btn me-2 btn_gr" href="/logout"> 로그아웃 </a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="main">
+        <section>
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-6">
+                        <h3 class="mt-5">글 작성 하기</h3>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <hr>
+    <div style="width: 1200px; display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; margin: auto;">
+        <div style="width: 95%;
+        max-width: 500px;
+        padding: 20px;
+        box-shadow: 0px 0px 3px 0px gray;">
+            <div class="input-group mb-3" style="width: 300px; margin-top: 10px;">
+                <label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+                <select class="form-select" id="category">
+                    <option selected>--선택--</option>
+                    <option value="cat">고양이</option>
+                    <option value="dog">개</option>
+                    <option value="bird">새</option>
+                    <option value="fish">물고기</option>
+                    <option value="snail">돌</option>
+                    <option value="turtle">거북이</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 10px;" class="input-group input-group-lg">
+                <span class="input-group-text">제목</span>
+                <input id="title" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-lg">
+            </div>
+            <div class="input-group mb-3">
+                <form id="imgForm">
+                    <input type="file" class="form-control" id="myFile">
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="content"
+                    style="height: 300px"></textarea>
+                <label for="floatingTextarea2">내용</label>
+            </div>
+        </div>
+        <div style="width: 500px; height: 518px; box-shadow: 0px 0px 3px 0px gray; margin:auto;">
+            <!-- 기본 이미지는 onerror 뒤 이미지입니다. -->
+            <img id="img" src="#" alt="이미지 미리보기" style="width: 500px; height: 500px;"
+                onerror="this.src='default_img/img.gif'">
+
+        </div>
+    </div>
+    <div style="width: 358px; margin: 20px auto 0 auto;">
+        <button style="margin-right: 50px;" type="button" class="btn btn-primary btn-lg" onclick="save_article()">글 게시
+            하기</button>
+        <button type="button" class="btn btn-secondary btn-lg">돌아가기</button>
+    </div>
+
+
+    <!-- 하단 푸터-->
+    <div class="jumbotron text-center mt-5 mb-0">
+        <footer class="py-5 bg-dark">
+            <h3 class="m-0 text-center text-white">달팽이키우기</h3>
+            <div class="container">
+                <div class="jumbotron text-center mt-5 mb-0">
+                    <div class="mem_list">
+                        <p class="m-0 text-center text-white">김성우 <a href="https://ksw4060.tistory.com/"
+                                class="m-0 text-center text-white" style="
+                            text-decoration:none">BLOG</a> / <a href="https://github.com/ksw406020230309"
+                                class="m-0 text-center text-white" style="text-decoration:none">GITHUB</a>
+                        </p>
+                        <p class="m-0 text-center text-white">서채연 <a href="https://chaeyami.tistory.com/"
+                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
+                                href="https://github.com/ChaeYami" class="m-0 text-center text-white"
+                                style="text-decoration:none">GITHUB</a></p>
+                        <p class="m-0 text-center text-white">이준영 <a href="https://beolog.tistory.com/"
+                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
+                                href="https://github.com/beo202202" class="m-0 text-center text-white"
+                                style="text-decoration:none">GITHUB</a></p>
+                        <p class="m-0 text-center text-white">정재준 <a href="https://bamtol-coding.tistory.com/"
+                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
+                                href="https://github.com/newstyle1443/drf_homework" class="m-0 text-center text-white"
+                                style="text-decoration:none">GITHUB</a></p>
+                        <p class="m-0 text-center text-white">박소진 <a
+                                href="https://right-otter-1b4.notion.site/Sparta-f505fc85ac5145fe9104a6e2abef444d"
+                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
+                                href="https://github.com/jinyjin7/MyAnimal/tree/main" class="m-0 text-center text-white"
+                                style="text-decoration:none">
+                                GITHUB</a>
+                        </p><br>
+                        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+                        <a href="/"><img
+                                src="https://file.notion.so/f/s/fbf88a29-f2ac-43c6-b8a5-12f518410898/%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png?id=0b6aa370-2c58-4e05-a450-1eb3181140bd&table=block&spaceId=24c771f9-c044-4d63-851f-660172d58cb7&expirationTimestamp=1683808290387&signature=XevQ9_wayjz5Y2xSJzntNZi1X2KXwHljYZ31XqFR7C4&downloadName=%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png"
+                                alt="상단로고" width="150"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
