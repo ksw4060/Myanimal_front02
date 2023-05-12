@@ -1,6 +1,7 @@
 
-//null값 (로그인/로그아웃세션)
+// index 상단 마이페이지,로그인,회원가입,로그아웃
 const payload = localStorage.getItem("payload");
+
 
 const payload_parse = JSON.parse(payload)
 console.log(payload_parse.account)
@@ -28,6 +29,4 @@ loginbtn.style.display = "none";
 
 let signupbtn = document.getElementById("signup-btn")
 signupbtn.style.display = "none";
-
-
 

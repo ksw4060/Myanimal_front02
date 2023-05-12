@@ -1,30 +1,4 @@
 
-// 로그인 하여 토큰발급시 유저의 account를 마이페이지 옆에 표시해줌
-
-// window.onload = () => {
-//   const payload = localStorage.getItem("payload");
-//   const payload_parse = JSON.parse(payload)
-//   console.log(payload_parse.account)
-
-//   const intro = document.getElementById("intro")
-//   intro.innerText = `${payload_parse.account}님 안녕하세요`
-
-
-//   let navbarRight = document.getElementById(logout)
-//   let newLi = document.createElement("li")
-//   newLi.setAttribute("class", "nav-link")
-
-//   let logoutBnt = document.createElement("button")
-//   logoutBnt.setAttribute("class", "nav-link")
-//   newLi.innerText = "로그아웃"
-//   logoutBnt.setAttribute("onclick", "handleLogout()")
-
-//   newLi.appendChild(logoutBnt)
-
-//   navbarRight.appendChild(newLi)
-// }
-
-
 // 게시글 피드 보여주기
 window.onload = async function loadArticles() {
   const response = await fetch(`${backend_base_url}/articles/`);
