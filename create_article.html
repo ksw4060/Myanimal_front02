@@ -11,12 +11,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link href="/css/index.css" rel="stylesheet">
-    <script src="/js/index.js"></script>
+    <link href="assets/css/index.css" rel="stylesheet">
+    <script src="assets/js/index.js"></script>
 
     <!-- 이미지 미리보기 입니다 -->
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(function () {
             $("#myFile").on('change', function () {
                 readURL(this);
@@ -30,26 +29,56 @@
                 }
                 reader.readAsDataURL(input.files[0]);
             }
-        }
+        } -->
     </script>
     <!-- 작성 글 데이터 보내는 기능 -->
     <script>
-        function save_article() {
-            let title = $('#title').val()
-            let content = $('#content').val()
-            let category = $('#category').val()
-            let img = $('#img').attr('src')
-            $.ajax({
-                type: 'POST',
-                url: 'http://127.0.0.1:8000/articles/',
-                data: { article_title: title, article_content: content, article_img: img, category: category },
-                success: function (response) {
-                    alert('글 게시 성공')
-                    // 작성한 글 보이게 이동, 상세 보기 라던가 메인 페이지
-                    window.location.reload()
-                }
+        // function save_article() {
+        //     let title = $('#title').val()
+        //     let content = $('#content').val()
+        //     let category = $('#category').val()
+        //     let img = $('#img').attr('src')
+        //     let token = localStorage.getItem("access");
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: 'http://127.0.0.1:8000/articles/',
+        //         headers: {
+        //             "Authorization": "Bearer " + localStorage.getItem("access")
+        //         },
+        //         data: { article_title: title, article_content: content, article_img: img, category: category },
+        //         success: function (response) {
+        //             alert('글 게시 성공')
+        //             // 작성한 글 보이게 이동, 상세 보기 라던가 메인 페이지
+        //             window.location.reload()
+        //         }
+        //     })
+        // }
+
+
+        async function save_article() {
+            const title = document.getElementById("title").value
+            const content = document.getElementById("content").value
+            const category = document.getElementById("category").value
+            const img = document.getElementById("img").value
+            const token = localStorage.getItem("access")
+
+            const response = await fetch('http://127.0.0.1:8000/articles/', {
+                headers: {
+                    "content-type":"application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("access"),
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    "article_title": title,
+                    "article_content": content,
+                    "category": category,
+                    "article_img": img,
+                })
             })
+            console.log()
         }
+
+        
     </script>
 
 </head>
@@ -144,7 +173,8 @@
         </div>
         <div style="width: 500px; height: 518px; box-shadow: 0px 0px 3px 0px gray; margin:auto;">
             <!-- 기본 이미지는 onerror 뒤 이미지입니다. -->
-        <img id="img" src="#" alt="이미지 미리보기" style="width: 500px; height: 500px;" onerror="this.src='default_img/img.gif'">
+            <img id="img" src="#" alt="이미지 미리보기" style="width: 500px; height: 500px;"
+                onerror="this.src='default_img/img.gif'">
 
         </div>
     </div>
