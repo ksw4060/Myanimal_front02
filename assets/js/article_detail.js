@@ -35,12 +35,16 @@ async function ArticleDetail(article_id) {
 
 }
 
+// 수정 페이지로 이동
+function redirectUpdatePage() {
+    window.location.href = `update_article.html?id=${article_id}`;
+  }
+
 
 // 글 삭제
 
 async function ArticleDelete() {
 
-    console.log(article_id)
     const response = await fetch(`${backend_base_url}/articles/${article_id}`, {
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("access"),
