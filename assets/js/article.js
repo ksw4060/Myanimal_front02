@@ -24,7 +24,7 @@ async function save_article() {
         })
     })
 
-    if (response.status == 200) {
+    if (response.status == 201) {
         alert("글 작성 완료")
         window.location.replace('index.html')
     } else if (title == '' || content == '' || category == '' ) {
@@ -51,7 +51,7 @@ async function UpdateArticle() {
         })
     })
 
-    if (response.status == 200) {
+    if (response.status == 201) {
         alert("글 작성 완료")
         window.location.replace('index.html')
     } else if (title == '' || content == '' || category == '' ) {
