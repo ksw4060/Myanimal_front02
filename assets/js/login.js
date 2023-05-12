@@ -7,22 +7,22 @@ async function Login() {
     const account = document.getElementById("account").value;
     const password = document.getElementById("password").value;
 
-    const response = await fetch(`${backend_base_url}/users/login/`,{ 
-            headers: {
-                'content-type': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify({
-                "account": account, 
-                "password": password
-            })
-        }
+    const response = await fetch(`${backend_base_url}/users/login/`, {
+        headers: {
+            'content-type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            "account": account,
+            "password": password
+        })
+    }
     )
     const response_json = await response.json()
 
-    localStorage.setItem("access", response_json.access); 
+    localStorage.setItem("access", response_json.access);
     localStorage.setItem("refresh", response_json.refresh);
-    
+
     if (response.status === 200) {
         alert("로그인 성공");
 
@@ -38,7 +38,7 @@ async function Login() {
         localStorage.setItem("payload", jsonPayload);
         location.replace('index.html')
 
-    } else if(response.status === 400 && response_json["non_field_errors"])  {
+    } else if (response.status === 400 && response_json["non_field_errors"]) {
         alert(response_json["non_field_errors"])
 
     } else {
@@ -71,8 +71,8 @@ async function Login() {
 
 
 // 로그아웃
-async function handlelogout(){
-    localStorage.removeItem("access")
-    localStorage.removeItem("refresh")
-    localStorage.removeItem("payload")
-}
+// async function handlelogout(){
+//     localStorage.removeItem("access")
+//     localStorage.removeItem("refresh")
+//     localStorage.removeItem("payload")
+// }
