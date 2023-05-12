@@ -12,7 +12,7 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link href="/assets/css/signup.css" rel="stylesheet">
-    
+
     <!-- JS -->
     <script src="/assets/js/signup.js"></script>
 
@@ -58,17 +58,23 @@
             </div>
         </div>
     </nav>
-    <form>
-        <div><label for="account">ID</label>
-            <input type="text" name="account" id="account" placeholder="account"></div>
-        <div><label for="email">Email</label><input type="email" name="email" id="email" placeholder="email"></div>    
-        <div><label for="password">password</label><input type="password" name="password" id="password" placeholder="password"></div>    
-        
-        <div><label for="nickname">닉네임</label><input type="text" name="nickname" id="nickname" placeholder="nickname"></div>
-       
-        <div><label for="profile_img">프로필 이미지</label><input type="file" name="profile_img" id="profile_img" placeholder="profile_img"></div>
-        <div><label for="categories">반려동물이 있으신가요?</label><select id="categories" name="categories"></div>
+    <div class="signup-form">
+        <form>
+            <div class="signup-form-control" style="height: 7vh;"><label for="account"></label>
+                <input type="text" name="account" id="account" placeholder="ID">
+            </div>
+            <div class="signup-form-control" style="height: 7vh;"><label for="email"></label><input type="email"
+                    name="email" id="email" placeholder="email"></div>
+            <div class="signup-form-control" style="height: 7vh;"><label for="password"></label><input type="password"
+                    name="password" id="password" placeholder="password"></div>
 
+            <div class="signup-form-control" style="height: 7vh;"><label for="nickname"></label><input type="text"
+                    name="nickname" id="nickname" placeholder="nickname"></div>
+
+            <div class="signup-form-control mb-3" ><label for="formFile" class="form-label">프로필 이미지</label><input class="form-control" type="file"
+                    name="profile_img" id="profile_img" placeholder="profile_img" style="border:1px solid gray"></div>
+            <div class="signup-form-control"><label for="categories">나의 반려동물 (또는 관심) </label><select id="categories"
+                    name="categories" style="margin-left : 10px; width: 100px;"></div>
             <option selected>-----</option>
             <option value="cat">고양이</option>
             <option value="dog">강아지</option>
@@ -77,13 +83,18 @@
             <option value="snail">달팽이</option>
             <option value="stone">애완돌</option>
             <option value="turtle">거북이</option>
-        </select>
-        <button type="button" class = "signup-button" onclick="handleSignupButton()">회원가입</button>
-        <div>
-            <a class="a_btn" href="login.html"> 로그인 </a>
-            <a class="a_btn" href=""> 비밀번호 재설정 </a>
-        </div>
-    </form>
+            </select>
+            <div class="signup-button">
+                <button type="button" onclick="handleSignupButton()">회원가입</button>
+            </div>
+            <hr/>
+            <div class = "buttons">
+                <button href="login.html">로그인</button>
+                <button href="reset_password.html">비밀번호 재설정</button>
+                
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
