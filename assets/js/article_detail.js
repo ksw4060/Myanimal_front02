@@ -100,12 +100,12 @@ async function loadComments(article_id) {
     const comments = await response.json();
     console.log(comments)
 
-    
+
 
 
     comments.forEach((comment) => {
         const commentList = document.getElementById('comment-list');
-        commentList.insertAdjacentHTML ('beforeend',`
+        commentList.insertAdjacentHTML('beforeend', `
         
         <div class="card-header">
                 <a>${comment.user}</a>
@@ -157,16 +157,16 @@ async function CommentDelete(comment_id) {
 
 
 // 좋아요 누르기
-async function ClickHeart(){
+async function ClickHeart() {
 
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/hearts/`,{
-        headers:{
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/hearts/`, {
+        headers: {
             "Authorization": "Bearer " + localStorage.getItem("access"),
             'content-type': 'application/json',
         },
-        method : 'POST',
+        method: 'POST',
     })
-    if(response.status === 200){
+    if (response.status === 200) {
         alert("❤️")
         location.reload();
     }
@@ -174,14 +174,14 @@ async function ClickHeart(){
 
 
 // 좋아요 갯수
-async function CountHeart(){
+async function CountHeart() {
 
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/hearts/`,{
-        headers:{
-            
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/hearts/`, {
+        headers: {
+
             'content-type': 'application/json',
         },
-        method : 'GET',
+        method: 'GET',
     })
     response_json = await response.json()
     document.getElementById('heart-count').innerText = response_json.hearts
@@ -189,16 +189,16 @@ async function CountHeart(){
 
 
 // 북마크 누르기
-async function ClickBookmark(){
+async function ClickBookmark() {
 
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/bookmarks/`,{
-        headers:{
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/bookmarks/`, {
+        headers: {
             "Authorization": "Bearer " + localStorage.getItem("access"),
             'content-type': 'application/json',
         },
-        method : 'POST',
+        method: 'POST',
     })
-    if(response.status === 200){
+    if (response.status === 200) {
         alert("북마크")
         location.reload();
     }
@@ -206,14 +206,14 @@ async function ClickBookmark(){
 
 
 // 북마크 갯수
-async function CountBookmark(){
+async function CountBookmark() {
 
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/bookmarks/`,{
-        headers:{
-            
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/bookmarks/`, {
+        headers: {
+
             'content-type': 'application/json',
         },
-        method : 'GET',
+        method: 'GET',
     })
     response_json = await response.json()
     console.log(response_json.bookmarks)
