@@ -47,22 +47,22 @@ function redirectUpdatePage() {
 // 글 삭제
 
 async function ArticleDelete() {
-
-    const response = await fetch(`${backend_base_url}/articles/${article_id}`, {
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("access"),
-            'content-type': 'application/json',
-        },
-        method: 'DELETE',
-    })
-    if (response.status === 204) {
-        alert("삭제 완료!")
-        location.replace('index.html')
-    } else {
-        alert("권한이 없습니다.")
+    if (confirm("삭제하시겠습니까?")) {
+        const response = await fetch(`${backend_base_url}/articles/${article_id}`, {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("access"),
+                'content-type': 'application/json',
+            },
+            method: 'DELETE',
+        })
+        if (response.status === 204) {
+            alert("삭제 완료!")
+            location.replace('index.html')
+        } else {
+            alert("권한이 없습니다.")
+        }
     }
 }
-
 
 
 // 댓글 작성
@@ -107,10 +107,10 @@ async function loadComments(article_id) {
         const commentList = document.getElementById('comment-list');
         commentList.insertAdjacentHTML('beforeend', `
         
-        <div class="card-header">
+        <div  class="card-header">
                 <a>${comment.user}</a>
             </div>
-            <div class="card-body" style="max-width: 1000px;">
+            <div id="comment-${comment.id}" class="card-body" style="max-width: 1000px;">
                 <div class="row g-5">
                     <!-- 유저 프로필 사진 -->
                     <div class="col-md-4" style="width: 200px;">
@@ -120,11 +120,11 @@ async function loadComments(article_id) {
                     <!-- 댓글 제목과 내용 입력-->
                     <div class="col-md-8">
                         <div class="card-body">
-                            <p class="card-text">${comment.comment}</p>
+                            <p class="card-text" id="comment-content-${comment.id}">${comment.comment}</p>
 
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="#" class="btn btn-secondary btn-sm me-md-2">댓글수정</a>
+                            <a href="#" onclick = "editComment(${comment.id})" class="btn btn-secondary btn-sm me-md-2">댓글수정</a>
                             <a href="#" onclick = "CommentDelete(${comment.id})" class="btn btn-secondary btn-sm">댓글삭제</a>
                         </div>
                         <p class="card-text"><small class="text-muted">${comment.comment_created_at}</small></p>
@@ -137,24 +137,80 @@ async function loadComments(article_id) {
     });
 }
 
-// 댓글 삭제
-async function CommentDelete(comment_id) {
 
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/${comment_id}`, {
+// 댓글 수정 폼 열기
+async function editComment(comment_id) {
+    event.preventDefault();
+
+    const commentCard = document.getElementById(`comment-${comment_id}`);
+    const before_comment = document.getElementById(`comment-content-${comment_id}`);
+
+    const editForm = document.createElement('div');
+    editForm.classList.add('edit-form');
+
+    const textarea = document.createElement('textarea');
+    textarea.classList.add('form-control');
+    console.log(before_comment.innerText)
+    textarea.value = before_comment.innerText;
+
+    const saveButton = document.createElement('button');
+    saveButton.classList.add('btn', 'btn-primary', 'btn-sm');
+    saveButton.textContent = '수정 완료';
+    saveButton.addEventListener('click', () => {
+        updateComment(comment_id, textarea.value);
+    });
+
+    editForm.appendChild(textarea);
+    editForm.appendChild(saveButton);
+
+    commentCard.querySelector('.card-body').appendChild(editForm);
+    before_comment.style.display = 'none'; // 기존 댓글 숨기기
+}
+// 댓글 수정 저장하기
+async function updateComment(commentId, newContent) {
+    const token = localStorage.getItem('access');
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/${commentId}/`, {
         headers: {
-            "Authorization": "Bearer " + localStorage.getItem("access"),
             'content-type': 'application/json',
+            'Authorization': `Bearer ${token}`,
         },
-        method: 'DELETE',
-    })
-    if (response.status === 204) {
-        alert("삭제 완료!")
+        method: 'PUT',
+        body: JSON.stringify({
+            'comment': newContent,
+        }),
+    });
+
+    if (response.status === 200) {
+        alert('댓글이 수정되었습니다.');
         location.reload();
+    } else if ((response.status === 403)) {
+        alert(response.message);
     } else {
-        alert("권한이 없습니다.")
+        alert('댓글 수정에 실패했습니다.');
     }
 }
 
+
+
+// 댓글 삭제
+async function CommentDelete(comment_id) {
+
+    if (confirm("삭제하시겠습니까?")) {
+        const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/${comment_id}`, {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("access"),
+                'content-type': 'application/json',
+            },
+            method: 'DELETE',
+        })
+        if (response.status === 204) {
+            alert("삭제 완료!")
+            location.reload();
+        } else {
+            alert("권한이 없습니다.")
+        }
+    }
+}
 
 // 좋아요 누르기
 async function ClickHeart() {
