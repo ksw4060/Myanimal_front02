@@ -1,0 +1,22 @@
+.image-container {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* css가 늦게 읽혀지며 히든이 잘 안된다. */
+/* .hidden {
+    display: none;
+} */
