@@ -1,11 +1,11 @@
-const frontend_base_url = "http://127.0.0.1:5000"
-const backend_base_url = "http://127.0.0.1:8000"
+
 
 
 //로그인
 async function Login() {
     const account = document.getElementById("account").value;
     const password = document.getElementById("password").value;
+    console.log(account, password)
 
     const response = await fetch(`${backend_base_url}/users/login/`, {
         headers: {

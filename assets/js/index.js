@@ -1,4 +1,5 @@
 
+
 // 로그인 하여 토큰발급시 유저의 account를 마이페이지 옆에 표시해줌
 window.onload = () => {
   const payload = localStorage.getItem("payload");
@@ -82,6 +83,7 @@ let changePage = function (page) {
 
 
 
+
 // 게시글 피드 보여주기
 window.onload = async function loadArticles() {
   const response = await fetch(`${backend_base_url}/articles/`);
@@ -100,8 +102,9 @@ window.onload = async function loadArticles() {
     // 채연 : 넹 너무 기여워요 ㅠ 어케 이케 이쁘지 저 납치 해도 될까요? 물론 소진님을
     articleCard.innerHTML = `
         <a style = "text-decoration:none; color:black;" href="article_detail.html?id=${article.id}">
+
         <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './image/IMG_8257.jpg'}" alt="" />
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
           <div class="card-body p-4">
             <div class="text-center">
               <h5 class="fw-bolder">${article.article_title}</h5>
@@ -143,7 +146,7 @@ async function CatCategory() {
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
         <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './image/IMG_8257.jpg'}" alt="" />
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
           <div class="card-body p-4">
             <div class="text-center">
               <h5 class="fw-bolder">${article.article_title}</h5>
@@ -184,7 +187,7 @@ async function DogCategory() {
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
         <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './image/IMG_8257.jpg'}" alt="" />
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
           <div class="card-body p-4">
             <div class="text-center">
               <h5 class="fw-bolder">${article.article_title}</h5>
@@ -221,7 +224,7 @@ async function birdCategory() {
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
         <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './image/IMG_8257.jpg'}" alt="" />
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
           <div class="card-body p-4">
             <div class="text-center">
               <h5 class="fw-bolder">${article.article_title}</h5>
@@ -259,7 +262,7 @@ async function fishCategory() {
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
         <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './image/IMG_8257.jpg'}" alt="" />
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
           <div class="card-body p-4">
             <div class="text-center">
               <h5 class="fw-bolder">${article.article_title}</h5>
@@ -297,7 +300,7 @@ async function snailCategory() {
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
         <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './image/IMG_8257.jpg'}" alt="" />
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
           <div class="card-body p-4">
             <div class="text-center">
               <h5 class="fw-bolder">${article.article_title}</h5>
@@ -335,7 +338,7 @@ async function stoneCategory() {
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
         <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './image/IMG_8257.jpg'}" alt="" />
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
           <div class="card-body p-4">
             <div class="text-center">
               <h5 class="fw-bolder">${article.article_title}</h5>
@@ -373,7 +376,7 @@ async function turtleCategory() {
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
         <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './image/IMG_8257.jpg'}" alt="" />
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
           <div class="card-body p-4">
             <div class="text-center">
               <h5 class="fw-bolder">${article.article_title}</h5>
