@@ -45,7 +45,7 @@ async function Login() {
         alert(response_json["non_field_errors"])
 
     } else {
-        alert("이메일과 비밀번호를 확인해주세요.");
+        alert("아이디와 비밀번호를 확인해주세요.");
     }
 }
 
