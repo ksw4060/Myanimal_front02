@@ -5,6 +5,7 @@ window.onload = () => {
     ArticleDetail(urlParams);
     loadComments(urlParams);
     CountHeart();
+    CountBookmark();
 }
 
 const article_id = new URLSearchParams(window.location.search).get('id');
@@ -183,6 +184,38 @@ async function CountHeart(){
         method : 'GET',
     })
     response_json = await response.json()
-    console.log(response_json.hearts)
     document.getElementById('heart-count').innerText = response_json.hearts
+}
+
+
+// 북마크 누르기
+async function ClickBookmark(){
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/bookmarks/`,{
+        headers:{
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method : 'POST',
+    })
+    if(response.status === 200){
+        alert("북마크")
+        location.reload();
+    }
+}
+
+
+// 북마크 갯수
+async function CountBookmark(){
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/bookmarks/`,{
+        headers:{
+            
+            'content-type': 'application/json',
+        },
+        method : 'GET',
+    })
+    response_json = await response.json()
+    console.log(response_json.bookmarks)
+    document.getElementById('bookmark-count').innerText = response_json.bookmarks
 }
