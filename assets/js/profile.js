@@ -4,25 +4,29 @@ $(document).ready(async function () {
     $('.hidden').hide();
     $('.permission').hide();
 
-    const payload = localStorage.getItem("payload");
-    const payload_parse = JSON.parse(payload)
-
-    const me_id = payload_parse.user_id;
-    console.log(me_id)
-
-    const token = localStorage.getItem("access");
-    console.log(token)
-
-
-
     let urlParam = new URLSearchParams(window.location.search);
     let user_id = urlParam.get('user_id');
     console.log(user_id);
 
-    // 접속 유저와 프포필 유저가 같다면?
-    if (me_id == user_id) {
-        $('.permission').show();
+    if (localStorage.getItem("payload")) {
+        const payload = localStorage.getItem("payload");
+        const payload_parse = JSON.parse(payload)
+
+        const me_id = payload_parse.user_id;
+        console.log(me_id)
+
+        const token = localStorage.getItem("access");
+        console.log(token)
+
+        // 접속 유저와 프포필 유저가 같다면 ?
+        if (me_id == user_id) {
+            $('.permission').show();
+        };
     };
+
+    // 임시 보이게 하게 로그인 되면 다시 삭제
+    // $('.permission').show();
+
 
     const response = await getProfile(user_id);
     // console.log(response)
@@ -108,19 +112,38 @@ $(document).ready(async function () {
         $('.original-content').show();
     });
 
+    // 이미지 띄우기, 아직 업로드X
     $('#image-input').click(function () {
-        console.log('이미지 업로드');
+        console.log('이미지 띄우기');
         $('#image-input').change(function () {
             var file = this.files[0];
             var reader = new FileReader();
 
+            // 파일 크기 제한 (단위: 바이트)
+            var maxSize = 3 * 100 * 1024; // 300KB 제한
+
+            // 파일 유효성 검사
+            var validImageTypes = ['image/jpeg', 'image/png', 'image/gif']; // 허용되는 이미지 파일의 MIME 유형들
+            if (!validImageTypes.includes(file.type)) {
+                alert('이미지 파일만 업로드할 수 있습니다.');
+                return;
+            }
+
+            // 파일 크기 검사
+            if (file.size > maxSize) {
+                alert('이미지 파일 크기는 5MB를 초과할 수 없습니다.');
+                return;
+            }
+
             // FileReader를 사용하여 이미지 파일을 읽고, 미리보기 이미지로 설정
             reader.onload = function (e) {
                 $('.view-img').attr('src', e.target.result);
+                $('.view-img').addClass('card-img-top')
             }
             reader.readAsDataURL(file);
         })
     });
+
 
     // await을 쓰려면 이렇게?
     // const response4 = await function putProfile();
@@ -136,6 +159,7 @@ $(document).ready(async function () {
         const imageFile = $('#image-input')[0].files[0];
         console.log("이미지파일");
         console.log(imageFile);
+
         // 선택한 카테고리 값 가져오기
         var selectedCategory = $('#mySelect').val();
         console.log("셀렉트 값");
@@ -145,9 +169,17 @@ $(document).ready(async function () {
 
         // FormData 객체 생성
         var formData = new FormData();
-        formData.append('profile_img', imageFile);
-        formData.append('category', selectedCategory);
-        formData.append('nickname', myNickname);
+        if (imageFile) {
+            formData.append('profile_img', imageFile);
+        }
+        // 카테고리가 있다면
+        if (selectedCategory) {
+            formData.append('category', selectedCategory);
+        }
+        // 닉네임이 있다면
+        if (myNickname) {
+            formData.append('nickname', myNickname);
+        }
 
         console.log("폼데이타");
         if (formData.has('category')) {
@@ -155,11 +187,13 @@ $(document).ready(async function () {
         } else {
             console.log('카테고리가 존재하지 않습니다.');
         }
-        if (formData.has('image')) {
+        if (formData.has('profile_img')) {
             console.log('이미지가 존재합니다.');
         } else {
             console.log('이미지가 존재하지 않습니다.');
         }
+
+        // 비어있는 값이면 못 보내게 조치를 해야함.
 
         // console.log(user_id);
         //AJAX 요청 보내기
