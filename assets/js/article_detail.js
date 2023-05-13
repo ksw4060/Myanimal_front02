@@ -91,7 +91,7 @@ async function save_comment() {
 
 }
 
-// 댓글 불러오기(미완)
+// 댓글 불러오기
 
 async function loadComments(article_id) {
     const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/`);
@@ -122,8 +122,8 @@ async function loadComments(article_id) {
 
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="#" class="btn btn-secondary btn-sm me-md-2">댓글 수정</a>
-                            <a href="#" class="btn btn-secondary btn-sm">댓글삭제</a>
+                            <a href="#" class="btn btn-secondary btn-sm me-md-2">댓글수정</a>
+                            <a href="#" onclick = "CommentDelete(${comment.id})" class="btn btn-secondary btn-sm">댓글삭제</a>
                         </div>
                         <p class="card-text"><small class="text-muted">${comment.comment_created_at}</small></p>
                     </div>
@@ -135,3 +135,20 @@ async function loadComments(article_id) {
     });
 }
 
+// 댓글 삭제
+async function CommentDelete(comment_id) {
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/${comment_id}`, {
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method: 'DELETE',
+    })
+    if (response.status === 204) {
+        alert("삭제 완료!")
+        location.reload();
+    } else {
+        alert("권한이 없습니다.")
+    }
+}
