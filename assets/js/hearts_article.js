@@ -1,4 +1,4 @@
-window.onload = fetch("http://127.0.0.1:8000//articles/hearts/", {
+window.onload = fetch(`${backend_base_url}/hearts/`, {
     headers: {
         "Authorization": "Bearer " + localStorage.getItem("access")
     }
