@@ -154,6 +154,7 @@ $(document).ready(async function () {
                 // 비밀번호가 일치 하지 않거나 비활성화한 사용자일 경우
                 error: function (error) {
                     alert('비밀번호가 일치하지 않습니다.', error);
+                    location.reload();
                 }
             });
         }
