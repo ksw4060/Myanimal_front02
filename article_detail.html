@@ -96,9 +96,19 @@
 
 
         <!-- 좋아요! -->
-        <div class="card text-center">
-            <a href="#" class="btn btn-secondary">좋아요 5개</a>
+        
+        <div class="card text-center" style="border:none">
+            <a href="#" onclick = "ClickHeart()" style="text-decoration: none;">❤️</a>
+            <span id = "heart-count">좋아요 개수</span>
         </div>
+
+        <!-- 북마크 -->
+        
+        <div class="card text-center" style="border:none">
+            <a href="#" onclick = "ClickBookmark()" style="text-decoration: none;">bookmark</a>
+            <span id = "bookmark-count">북마크 개수</span>
+        </div>
+        
 
         <!-- 댓글 작성 시작 -->
         <div id="comment_area">

@@ -4,6 +4,8 @@ window.onload = () => {
     const urlParams = new URLSearchParams(window.location.search).get('id');
     ArticleDetail(urlParams);
     loadComments(urlParams);
+    CountHeart();
+    CountBookmark();
 }
 
 const article_id = new URLSearchParams(window.location.search).get('id');
@@ -91,7 +93,7 @@ async function save_comment() {
 
 }
 
-// 댓글 불러오기(미완)
+// 댓글 불러오기
 
 async function loadComments(article_id) {
     const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/`);
@@ -122,8 +124,8 @@ async function loadComments(article_id) {
 
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="#" class="btn btn-secondary btn-sm me-md-2">댓글 수정</a>
-                            <a href="#" class="btn btn-secondary btn-sm">댓글삭제</a>
+                            <a href="#" class="btn btn-secondary btn-sm me-md-2">댓글수정</a>
+                            <a href="#" onclick = "CommentDelete(${comment.id})" class="btn btn-secondary btn-sm">댓글삭제</a>
                         </div>
                         <p class="card-text"><small class="text-muted">${comment.comment_created_at}</small></p>
                     </div>
@@ -135,3 +137,85 @@ async function loadComments(article_id) {
     });
 }
 
+// 댓글 삭제
+async function CommentDelete(comment_id) {
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/${comment_id}`, {
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method: 'DELETE',
+    })
+    if (response.status === 204) {
+        alert("삭제 완료!")
+        location.reload();
+    } else {
+        alert("권한이 없습니다.")
+    }
+}
+
+
+// 좋아요 누르기
+async function ClickHeart(){
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/hearts/`,{
+        headers:{
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method : 'POST',
+    })
+    if(response.status === 200){
+        alert("❤️")
+        location.reload();
+    }
+}
+
+
+// 좋아요 갯수
+async function CountHeart(){
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/hearts/`,{
+        headers:{
+            
+            'content-type': 'application/json',
+        },
+        method : 'GET',
+    })
+    response_json = await response.json()
+    document.getElementById('heart-count').innerText = response_json.hearts
+}
+
+
+// 북마크 누르기
+async function ClickBookmark(){
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/bookmarks/`,{
+        headers:{
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method : 'POST',
+    })
+    if(response.status === 200){
+        alert("북마크")
+        location.reload();
+    }
+}
+
+
+// 북마크 갯수
+async function CountBookmark(){
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/bookmarks/`,{
+        headers:{
+            
+            'content-type': 'application/json',
+        },
+        method : 'GET',
+    })
+    response_json = await response.json()
+    console.log(response_json.bookmarks)
+    document.getElementById('bookmark-count').innerText = response_json.bookmarks
+}
