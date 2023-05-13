@@ -4,6 +4,7 @@ window.onload = () => {
     const urlParams = new URLSearchParams(window.location.search).get('id');
     ArticleDetail(urlParams);
     loadComments(urlParams);
+    CountHeart();
 }
 
 const article_id = new URLSearchParams(window.location.search).get('id');
@@ -151,4 +152,37 @@ async function CommentDelete(comment_id) {
     } else {
         alert("권한이 없습니다.")
     }
+}
+
+
+// 좋아요 누르기
+async function ClickHeart(){
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/hearts/`,{
+        headers:{
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method : 'POST',
+    })
+    if(response.status === 200){
+        alert("❤️")
+        location.reload();
+    }
+}
+
+
+// 좋아요 갯수
+async function CountHeart(){
+
+    const response = await fetch(`${backend_base_url}/articles/${article_id}/hearts/`,{
+        headers:{
+            
+            'content-type': 'application/json',
+        },
+        method : 'GET',
+    })
+    response_json = await response.json()
+    console.log(response_json.hearts)
+    document.getElementById('heart-count').innerText = response_json.hearts
 }

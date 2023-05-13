@@ -1,6 +1,6 @@
 
 
-window.onload = fetch("http://127.0.0.1:8000/articles/bookmarks/", {
+window.onload = fetch(`${backend_base_url}/articles/bookmarks/`, {
     headers: {
         "Authorization": "Bearer " + localStorage.getItem("access")
     }
