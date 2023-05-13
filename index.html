@@ -4,18 +4,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>집사는 집사느라 집못사</title>
+    <title>집사는 집사하느라 집못사</title>
+    
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link href="/assets/css/index.css" rel="stylesheet">
+
 
 </head>
 
 <body>
     <!-- 상단 네비게이션바 -->
-    <div id="navbar-container"></div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255, 238, 217);">
+        <div class="container px-4 px-lg-5">
+            <!-- {% if user.is_authenticated %} -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link btn me-2 btn_org" href="create_article.html">글쓰기</a></li>
+                </ul>
+
+                <a href="/" class="me-auto navbar-brand"><img src="./assets/images/집집집메인로고.png" alt="상단로고"
+                        width="150">집사는 집사하느라
+                    집못사</a>
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+
+                        </li>
+                    </ul>
+                    <ul id="navbar-right" class="navbar-nav mr-auto">
+                        <li class="nav-item disable">
+
+                            <!-- 로그인시 회원 로그인 정보를 보여줌 : 닉네임 누르면 마이페이지 -->
+                            <a id="intro" class="nav-link btn me-2 btn_org" href="/"></a>
+                        </li>
+                        <!-- 로그인과 회원가입 버튼 -->
+                        <li class="nav-item disable"><a id="login-btn" class="nav-link btn me-2 btn_org"
+                                href="./login.html"> 로그인 <span class="sr-only"></span></a></li>
+                        <li class="nav-item disable"><a id="signup-btn" class="nav-link btn me-2 btn_gr"
+                                href="./signup.html"> 회원가입 <span class="sr-only"></span></a></li>
+
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
 
     <div class="main">
         <section>
@@ -26,7 +64,7 @@
                         <nav class="navbar navbar-expand-lg navbar-light" style="color: gray;" id="my-table">
                             <ul class="navbar-nav me-auto">
                                 <li class="nav-item"><button class="nav-link btn me-2 btn_org" type=”button”
-                                        onclick="loadArticles(); ">모두보기</button>
+                                        onclick="">모두보기</button>
                                 <li class="nav-item"><button onclick="CatCategory()" type="button"
                                         class="nav-link btn me-2 btn_org">고양이</button>
                                 </li>
@@ -72,17 +110,19 @@
 
     </div>
     </section>
-    <ul class="discussions__container" id="page">
-        <div class="pagination-block">
-            <span id="page_number" class="outline-none"></span>
-        </div>
-    </ul>
-    
-    
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" id="page">
+            <li class="page-item disabled">
+                <a class="page_number page-link" href="./index.html" tabindex="-1" aria-disabled="true">현재페이지</a>
+            </li>
+            <!-- 페이지 번호를 동적으로 생성할 예정 -->
+            <li class="page-item">
+                <button id="nextBtn" class="page_number page-link" type="button" onclick="nextPage()">Next</button>
+            </li>
+        </ul>
+    </nav>
     <!-- 하단 푸터 시작-->
-
     <div id="footer-container"></div>
-
     <!-- 하단 푸터 끝-->
 
     <script src="/assets/js/base.js"></script>
@@ -91,6 +131,7 @@
     <script src="/assets/js/signup.js"></script>
     <script src="/assets/js/reset_password.js"></script>
     <script src="/assets/js/index.js"></script>
+    <script src="/assets/js/index_prac.js"></script>
 
 </body>
 

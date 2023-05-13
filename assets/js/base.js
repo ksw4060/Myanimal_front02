@@ -1,7 +1,7 @@
 
 // 로그아웃
 async function handleLogout() {
-    console.log("힝")
+    event.preventDefault();
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     logoutBtn.setAttribute("onclick", "handleLogout()");
 
                     newLi.appendChild(logoutBtn);
-                    
+
                     navbarRight.appendChild(newLi);
                 }
 

@@ -7,9 +7,9 @@ async function save_article() {
     const title = document.getElementById("title").value
     const content = document.getElementById("content").value
     const category = document.getElementById("category").value
-    const img = document.getElementById("img").value
+    const img = document.getElementById("myFile").files[0]
     const token = localStorage.getItem("access")
-
+    console.log(img)
     const response = await fetch(`${backend_base_url}/articles/`, {
         headers: {
             "content-type":"application/json",
@@ -20,7 +20,7 @@ async function save_article() {
             "article_title": title,
             "article_content": content,
             "category": category,
-            "article_img": img,
+            "article_img": img
         })
     })
 
