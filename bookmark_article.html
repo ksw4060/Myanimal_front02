@@ -10,53 +10,20 @@
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link href="/css/index.css" rel="stylesheet">
-    <script src="/js/index.js"></script>
+    <script src="assets/js/index.js"></script>
     <script src="/assets/js/bookmark_article.js"></script>
+    <script src="/assets/js/base.js"></script>
+
 
 </head>
 
 <body>
+        
     <!-- 상단 네비게이션바 -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255, 238, 217);">
-        <div class="container px-4 px-lg-5">
-            <!-- {% if user.is_authenticated %} -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div id="navbar-container"></div>
 
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link btn me-2 btn_org" href="create_article.html">글쓰기</a></li>
-                </ul>
-                <a href="/" class="me-auto navbar-brand"><img
-                        src="https://file.notion.so/f/s/fbf88a29-f2ac-43c6-b8a5-12f518410898/%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png?id=0b6aa370-2c58-4e05-a450-1eb3181140bd&table=block&spaceId=24c771f9-c044-4d63-851f-660172d58cb7&expirationTimestamp=1683808290387&signature=XevQ9_wayjz5Y2xSJzntNZi1X2KXwHljYZ31XqFR7C4&downloadName=%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png"
-                        alt="상단로고" width="150">집사는 집사하느라 집못사</a>
-                <form class="form-inline my-2 my-lg-0">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link btn me-2 btn_org" href="login.html"> 로그인 <span
-                                    class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link btn me-2 btn_gr" href="signup.html"> 회원가입 <span
-                                    class="sr-only"></span></a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item disable">
-                            <span class="nav-link">
-                                <!-- {{ user.username }}님 반갑습니다! -->
-                            </span>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link btn me-2 btn_org" href="{% url 'profile' %}"> 마이페이지 </a>
-                        <li class="nav-item active">
-                            <a class="nav-link btn me-2 btn_gr" href="/logout"> 로그아웃 </a>
-                        </li>
-                    </ul>
-            </div>
-        </div>
-    </nav>
+
+
 
     <div class="main">
         <section>
@@ -119,48 +86,11 @@
         </ul>
     </nav>
 
-
-
-    <!-- 하단 푸터-->
-    <div class="jumbotron text-center mt-5 mb-0">
-        <footer class="py-5 bg-dark">
-            <h3 class="m-0 text-center text-white">달팽이키우기</h3>
-            <div class="container">
-                <div class="jumbotron text-center mt-5 mb-0">
-                    <div class="mem_list">
-                        <p class="m-0 text-center text-white">김성우 <a href="https://ksw4060.tistory.com/"
-                                class="m-0 text-center text-white" style="
-                            text-decoration:none">BLOG</a> / <a href="https://github.com/ksw406020230309"
-                                class="m-0 text-center text-white" style="text-decoration:none">GITHUB</a>
-                        </p>
-                        <p class="m-0 text-center text-white">서채연 <a href="https://chaeyami.tistory.com/"
-                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
-                                href="https://github.com/ChaeYami" class="m-0 text-center text-white"
-                                style="text-decoration:none">GITHUB</a></p>
-                        <p class="m-0 text-center text-white">이준영 <a href="https://beolog.tistory.com/"
-                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
-                                href="https://github.com/beo202202" class="m-0 text-center text-white"
-                                style="text-decoration:none">GITHUB</a></p>
-                        <p class="m-0 text-center text-white">정재준 <a href="https://bamtol-coding.tistory.com/"
-                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
-                                href="https://github.com/newstyle1443/drf_homework" class="m-0 text-center text-white"
-                                style="text-decoration:none">GITHUB</a></p>
-                        <p class="m-0 text-center text-white">박소진 <a
-                                href="https://right-otter-1b4.notion.site/Sparta-f505fc85ac5145fe9104a6e2abef444d"
-                                class="m-0 text-center text-white" style="text-decoration:none">BLOG</a> / <a
-                                href="https://github.com/jinyjin7/MyAnimal/tree/main" class="m-0 text-center text-white"
-                                style="text-decoration:none">
-                                GITHUB</a>
-                        </p><br>
-                        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
-                        <a href="/"><img
-                                src="https://file.notion.so/f/s/fbf88a29-f2ac-43c6-b8a5-12f518410898/%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png?id=0b6aa370-2c58-4e05-a450-1eb3181140bd&table=block&spaceId=24c771f9-c044-4d63-851f-660172d58cb7&expirationTimestamp=1683808290387&signature=XevQ9_wayjz5Y2xSJzntNZi1X2KXwHljYZ31XqFR7C4&downloadName=%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png"
-                                alt="상단로고" width="150"></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
+    
+    <!-- 하단 푸터 시작-->
+    <div id="footer-container"></div>
+    <!-- 하단 푸터 끝-->
+    
 </body>
 
 </html>
