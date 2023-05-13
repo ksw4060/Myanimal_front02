@@ -1,5 +1,4 @@
-const frontend_base_url = "http://127.0.0.1:5000"
-const backend_base_url = "http://127.0.0.1:8000"
+
 
 
 async function handleSignup() {
@@ -28,13 +27,13 @@ async function handleSignup() {
 }
 
 
-async function handleSignupButton(){
+async function handleSignupButton() {
     const response = await handleSignup();
 
-    if(response.status==201){
+    if (response.status == 201) {
         alert("이메일 발송 완료. 이메일 인증 후 회원가입을 완료해주세요")
         window.location.replace(`${frontend_base_url}/login.html`)
     }
 }
 
-checkLogin()
+// checkLogin()
