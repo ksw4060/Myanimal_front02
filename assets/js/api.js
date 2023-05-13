@@ -256,13 +256,6 @@ async function putProfile() {
 // }
 //================
 
-// 로그아웃
-async function handleLogout() {
-    localStorage.removeItem("access")
-    localStorage.removeItem("refresh")
-    localStorage.removeItem("payload")
-    location.reload()
-}
 
 
 
