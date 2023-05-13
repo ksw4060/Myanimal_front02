@@ -47,22 +47,22 @@ function redirectUpdatePage() {
 // 글 삭제
 
 async function ArticleDelete() {
-
-    const response = await fetch(`${backend_base_url}/articles/${article_id}`, {
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("access"),
-            'content-type': 'application/json',
-        },
-        method: 'DELETE',
-    })
-    if (response.status === 204) {
-        alert("삭제 완료!")
-        location.replace('index.html')
-    } else {
-        alert("권한이 없습니다.")
+    if (confirm("삭제하시겠습니까?")) {
+        const response = await fetch(`${backend_base_url}/articles/${article_id}`, {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("access"),
+                'content-type': 'application/json',
+            },
+            method: 'DELETE',
+        })
+        if (response.status === 204) {
+            alert("삭제 완료!")
+            location.replace('index.html')
+        } else {
+            alert("권한이 없습니다.")
+        }
     }
 }
-
 
 
 // 댓글 작성
@@ -195,21 +195,22 @@ async function updateComment(commentId, newContent) {
 // 댓글 삭제
 async function CommentDelete(comment_id) {
 
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/${comment_id}`, {
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("access"),
-            'content-type': 'application/json',
-        },
-        method: 'DELETE',
-    })
-    if (response.status === 204) {
-        alert("삭제 완료!")
-        location.reload();
-    } else {
-        alert("권한이 없습니다.")
+    if (confirm("삭제하시겠습니까?")) {
+        const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/${comment_id}`, {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("access"),
+                'content-type': 'application/json',
+            },
+            method: 'DELETE',
+        })
+        if (response.status === 204) {
+            alert("삭제 완료!")
+            location.reload();
+        } else {
+            alert("권한이 없습니다.")
+        }
     }
 }
-
 
 // 좋아요 누르기
 async function ClickHeart() {
