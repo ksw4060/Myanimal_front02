@@ -114,6 +114,13 @@ $(document).ready(async function () {
             var file = this.files[0];
             var reader = new FileReader();
 
+            // 파일 유효성 검사
+            var validImageTypes = ['image/jpeg', 'image/png', 'image/gif']; // 허용되는 이미지 파일의 MIME 유형들
+            if (!validImageTypes.includes(file.type)) {
+                alert('이미지 파일만 업로드할 수 있습니다.');
+                return;
+            }
+
             // FileReader를 사용하여 이미지 파일을 읽고, 미리보기 이미지로 설정
             reader.onload = function (e) {
                 $('.view-img').attr('src', e.target.result);
@@ -121,6 +128,7 @@ $(document).ready(async function () {
             reader.readAsDataURL(file);
         })
     });
+
 
     // await을 쓰려면 이렇게?
     // const response4 = await function putProfile();
@@ -145,7 +153,9 @@ $(document).ready(async function () {
 
         // FormData 객체 생성
         var formData = new FormData();
-        formData.append('profile_img', imageFile);
+        if (imageFile) {
+            formData.append('profile_img', imageFile);
+        }
         formData.append('category', selectedCategory);
         formData.append('nickname', myNickname);
 
@@ -155,7 +165,7 @@ $(document).ready(async function () {
         } else {
             console.log('카테고리가 존재하지 않습니다.');
         }
-        if (formData.has('image')) {
+        if (formData.has('profile_img')) {
             console.log('이미지가 존재합니다.');
         } else {
             console.log('이미지가 존재하지 않습니다.');
