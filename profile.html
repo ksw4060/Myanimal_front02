@@ -43,9 +43,17 @@
 
             <div class="permission">
                 <button id="edit-btn" class="btn btn-warning">수정</button>
+                <button id="withdrawal-btn" class="btn btn-danger">탈퇴</button>
+                <button id="withdrawal2-btn" class="btn btn-danger withdrawal">탈퇴</button>
+                <button id="cancel-withdrawal-btn" class="btn btn-secondary withdrawal">취소</button>
+                <button id="cancel-btn" class="hidden btn btn-secondary">취소</button>
                 <!-- <button class="hidden btn btn btn-dark" id="confirm-btn" onclick="putProfile()">완료</button> -->
                 <button class="hidden btn btn btn-dark" id="confirm-btn">완료</button>
-                <button class="hidden btn btn-secondary" id="cancel-btn">취소</button>
+
+                <div class="form-floating withdrawal">
+                    <input type="password" class="form-control" id="password-input" placeholder="비밀번호">
+                    <label for="floatingPassword">비밀번호</label>
+                </div>
             </div>
             <div class="d-flex align-items-center justify-content-center vh-100">
                 <div class="container">
