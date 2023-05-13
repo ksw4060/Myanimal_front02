@@ -1,7 +1,8 @@
-const frontend_base_url = "http://127.0.0.1:5500"
+const frontend_base_url = "http://127.0.0.1:5000"
 const backend_base_url = "http://127.0.0.1:8000"
 
 $(document).ready(async function () {
+
     console.log("api.js 로딩")
 
     let urlParam = new URLSearchParams(window.location.search);
@@ -256,10 +257,11 @@ async function putProfile() {
 //================
 
 // 로그아웃
-function handleLogout() {
+async function handleLogout() {
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
+    location.reload()
 }
 
 

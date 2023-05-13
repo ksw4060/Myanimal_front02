@@ -1,0 +1,130 @@
+#article_detail{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: white;
+    color: black;
+}
+
+.pagination .page-item .page-link {
+    background-color: white;
+    color: black;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: lightgray;
+    border: solid darkgray 1px;
+    color: black;
+}
+
+.mytoggle {
+    background-color: aqua;
+}
+
+.ALLPHOTO {
+    /* 카드 묶음 스타일 */
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    margin: 0% 10% 5% 10%;
+
+    background-position: center;
+    background-size: cover;
+
+}
+
+.maintexter {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    width: 80%;
+    display: block;
+    align-items: center;
+
+    margin: 0% 10% 5% 10%;
+    padding: 2%;
+
+    border-radius: 15%;
+
+    background-position: center;
+    background-size: cover;
+}
+
+.card {
+    /* 각각 카드 스타일 */
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+
+
+    margin-top: 5%;
+    padding: 2.5%;
+
+    border-radius: 5%;
+
+
+    background-image: none;
+    background-position: center;
+    background-size: cover;
+    justify-content: center;
+
+    display: block;
+    /* flex-direction: column; */
+
+}
+
+.card-img-top:hover {
+    /* 이미지파일 전체 호버기능 */
+    width: 101%;
+    /* 사진크기 조절 */
+    transform: scale(1.01, 1.01);
+    /* 가로1.01배 새로 1.01배 로 커짐 */
+    transition: transform .300s;
+    /* 커지는 시간 */
+}
+
+
+.img-fluid {
+    /* 카드 안에 이미지 자세 속성 */
+    width: 98%;
+    height: 98%;
+    border-radius: 1%;
+    overflow: hidden;
+    margin: 2.5%;
+    display: block;
+}
+
+
+
+.mycards>.card-body>button:hover {
+    background-color: #b68a30;
+    color: white;
+}
+
+/* 링크 색 변경, 밑줄 제거*/
+.blog {
+    color: gray;
+    text-decoration-line: none;
+}
+
+/* 카드 내에 글씨체 : 봄바람 글씨체 */
+@font-face {
+    font-family: 'HSBombaram21-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/HSBombaram21-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 카드 내에 글씨체 : 봄바람 글씨체 */
+.card-body {
+    font-family: 'HSBombaram21-Regular';
+}
+
+/* 카드 내에 내용물 글씨체 색깔 : 회색 */
+.card-text {
+    color: gray;
+}

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>집사는 집사느라 집못사</title>
-    <!-- Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link href="/assets/css/index.css" rel="stylesheet">
+    <title>집사는 집사하느라 집못사</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="/assets/css/article_detail.css" rel="stylesheet">
+    <script src="/assets/js/article.js"></script>
+    <script src="/assets/js/article_detail.js"></script>
+    
 
+    <style> </style>
 </head>
 
 <body>
@@ -26,100 +28,101 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link btn me-2 btn_org" href="create_article.html">글쓰기</a></li>
                 </ul>
-
-                <a href="/" class="me-auto navbar-brand"><img src="./assets/images/집집집메인로고.png" alt="상단로고"
-                        width="150">집사는 집사하느라
-                    집못사</a>
+                <a href="/"><img src="./assets/images/집집집메인로고.png" alt="상단로고" width="150"></a>
                 <form class="form-inline my-2 my-lg-0">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <!-- <a class="nav-link btn me-2 btn_org" href="./login.html"> 로그인 <span
+                            <a class="nav-link btn me-2 btn_org" href="login.html"> 로그인 <span
                                     class="sr-only"></span></a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link btn me-2 btn_gr" href="./signup.html"> 회원가입 <span
-                                    class="sr-only"></span></a> -->
-
+                            <a class="nav-link btn me-2 btn_gr" href="signup.html"> 회원가입 <span
+                                    class="sr-only"></span></a>
                         </li>
                     </ul>
-                    <ul id="navbar-right" class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item disable">
-
-                            <!-- 로그인시 회원 로그인 정보를 보여줌 -->
-                            <a id="intro" class="nav-link btn me-2 btn_org" href="/"></a>
+                            <span class="nav-link">
+                                <!-- {{ user.username }}님 반갑습니다! -->
+                            </span>
                         </li>
-                        <!-- 로그인과 회원가입 버튼 -->
-                        <li class="nav-item disable"><a id="login-btn" class="nav-link btn me-2 btn_org"
-                                href="./login.html"> 로그인 <span class="sr-only"></span></a></li>
-                        <li class="nav-item disable"><a id="signup-btn" class="nav-link btn me-2 btn_gr"
-                                href="./signup.html"> 회원가입 <span class="sr-only"></span></a></li>
-
+                        <li class="nav-item active">
+                            <a class="nav-link btn me-2 btn_org" href="{% url 'profile' %}"> 마이페이지 </a>
+                        <li class="nav-item active">
+                            <a class="nav-link btn me-2 btn_gr" button onclick="handleLogout()"> 로그아웃 </a>
                         </li>
                     </ul>
             </div>
         </div>
     </nav>
+    <div id="article_detail">
+        <!-- 글제목, 수정&삭제 버튼 -->
+        <div class="maintexter">
 
-    <div class="main">
-        <section>
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-6">
-                        <h3 class="mt-5">어떤 반려동물을 보고 싶으신가요?</h3>
-                        <nav class="navbar navbar-expand-lg navbar-light" style="color: gray;" id="my-table">
-                            <ul class="navbar-nav me-auto">
-                                <li class="nav-item"><button class="nav-link btn me-2 btn_org" type=”button”
-                                        onclick="loadArticles(); ">모두보기</button>
-                                <li class="nav-item"><button onclick="CatCategory()" type="button"
-                                        class="nav-link btn me-2 btn_org">고양이</button>
-                                </li>
-                                <li class="nav-item"><button onclick="DogCategory()" type="button"
-                                        class="nav-link btn me-2 btn_org">강아지</button>
-                                </li>
-                                <li class="nav-item"><button onclick="birdCategory()" type="button"
-                                        class="nav-link btn me-2 btn_org">새</button>
-                                </li>
-                                <li class="nav-item"><button onclick="fishCategory()" type="button"
-                                        class="nav-link btn me-2 btn_org">물고기</button>
-                                </li>
-                                <li class="nav-item"><button onclick="snailCategory()" type="button"
-                                        class="nav-link btn me-2 btn_org">달팽이</button>
-                                </li>
-                                <li class="nav-item"><button onclick="stoneCategory()" type="button"
-                                        class="nav-link btn me-2 btn_org">애완돌</button>
-                                </li>
-                                <li class="nav-item"><button onclick="turtleCategory()" type="button"
-                                        class="nav-link btn me-2 btn_org">거북이</button>
-                                </li>
-                            </ul>
-                        </nav>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-    </div>
-    <hr>
-    <p></p>
-    <div class="mycards">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
-                id="article-list">
+            <div class="card-body">
+                <div id="category">카테고리</div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">작성자 : <span id="author"></span></div>
+                <h1 id="article-title" class="card text-center"></h1>
+                <p class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    작성날짜 : <span id="article-created-at"></span>
+                </p>
 
             </div>
+            <div class="card-body">
+                <a href="#" onclick="redirectUpdatePage()" class="btn btn-secondary me-md-2">수정하기</a>
+                <a href="#" onclick="ArticleDelete()" class="btn btn-secondary">삭제하기</a>
+            </div>
+
         </div>
 
-    </div>
+        <div class="maintexter">
 
-    </div>
+            <img src="https://i.ibb.co/Ssm90Cq/4164335-1582361978747.gif" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 id="article-content" class="card-title">Card title</h5>
 
-    </div>
-    </section>
-    <ul class="discussions__container" id="page">
-        <div class="pagination-block">
-            <span id="page_number" class="outline-none"></span>
+                <p class="card-text"><small class="text-muted">마지막 수정 : <span id="article-updated-at"></span></small>
+                </p>
+                <!-- <p class="card-text">This is a wider card with supporting text below as a natural
+                lead-in to additional
+                content. This content is a little bit longer.</p> -->
+            </div>
+
+
+
+
         </div>
-    </ul>
+
+
+
+        <!-- 좋아요! -->
+        <div class="card text-center">
+            <a href="#" class="btn btn-secondary">좋아요 5개</a>
+        </div>
+
+        <!-- 댓글 작성 시작 -->
+        <div id="comment_area">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">댓글 작성</label>
+                <textarea class="form-control" id="comment" rows="3"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg" onclick="save_comment()">등록</button>
+        </div>
+        <!-- 댓글 작성 끝 -->
+        <!-- <div class="card text-center">
+            <h2>댓글 보러가기(0)</h2>
+        </div> -->
+
+
+        <div id = "comment-list" class="card text-center">
+
+
+            <!-- 댓글 목록 자리 -->
+
+
+        </div>
+    </div>
+
     <!-- 하단 푸터 시작-->
     <div class="jumbotron text-center mt-5 mb-0">
         <footer class="py-5 bg-dark">
@@ -161,7 +164,7 @@
                                 <img src="./assets/images/github_logo.png" alt="깃허브로고" width="18"></a>
                         </p><br>
                         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
-                        <a href="/"><img src="./assets/images/집집집메인로고.png" alt="상단로고" width="150"></a>
+                        <a href="/"><img src="./image/집집집메인로고.png" alt="상단로고" width="150"></a>
                     </div>
                 </div>
             </div>
@@ -169,15 +172,6 @@
     </div>
     <!-- 하단 푸터 끝-->
 
-    <script src="/assets/js/api.js"></script>
-    <script src="/assets/js/login.js"></script>
-    <script src="/assets/js/signup.js"></script>
-    <script src="/assets/js/reset_password.js"></script>
-    <script src="/assets/js/nav.js"></script>
-    <script src="/assets/js/index.js"></script>
-
 </body>
-
-<!-- # -->
 
 </html>
