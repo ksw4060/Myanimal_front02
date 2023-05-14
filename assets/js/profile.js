@@ -1,5 +1,5 @@
-
 $(document).ready(async function () {
+    console.log('프로필 js 로딩');
     $('.hidden').hide();
     $('.permission').hide();
     $('.permission2').hide();
@@ -16,14 +16,31 @@ $(document).ready(async function () {
         const payload = localStorage.getItem("payload");
         const payload_parse = JSON.parse(payload)
 
-        const me_id = payload_parse.user_id;
         const token = localStorage.getItem("access");
+        const me_id = payload_parse.user_id;
+        const account = payload_parse.account;
 
-        // 접속 유저와 프포필 유저가 같다면?
+        // 접속 유저와 프로필 유저가 같다면?
         if (me_id == user_id) {
             $('.permission').show();
         } else {
+            // 다른 사용자 라면
             $('.permission2').show();
+            $('#unfollow-btn').hide();
+
+            response.followers.includes(account)
+            const isAccountInArray = response.followers.includes(account);
+
+            if (isAccountInArray) {
+                // 팔로우가 되어 있다면
+                $('#follow-btn').hide(); // '팔로우하기'를 숨김.
+                $('#following-btn').show(); // '팔로잉'을 보여줌.
+            }
+            else {
+                // 팔로우가 되어 있지 않다면
+                $('#follow-btn').show(); // '팔로우하기'를 보여줌.
+                $('#following-btn').hide(); // '팔로잉'을 숨김.
+            }
         }
     }
 
@@ -80,7 +97,7 @@ $(document).ready(async function () {
     $('#receive_hearts_count').text(response3);
 
     // 팔로잉 수
-    $('#followings').text(response.followers.length);
+    $('#followings').text(response.followings.length);
 
     // 팔로워 수
     $('#followers').text(response.followers.length);
@@ -249,18 +266,39 @@ $(document).ready(async function () {
         }
     });
 
-    // 팔로우 버튼을 누른다면? 아직 수정 안함.
+    // (언)팔로우 버튼을 누른다면?
+    $('#follow-btn, #unfollow-btn').click(async function () {
+        const response = await $.ajax({
+            url: `${backend_base_url}/users/follow/${user_id}/`,
+            method: 'POST',
+            contentType: 'application/json',
+            dataType: "json",
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem("access"),
+                // localStorage.getItem("access")
+            },
+            success: function (response) {
+                alert(response);
+                // 알람과 새로고침 없이 적용을 해보자.
+                location.reload();
+            },
+            // 비밀번호가 일치 하지 않거나 비활성화한 사용자일 경우
+            error: function (error) {
+                alert('팔로우 기능에 문제가 생겼습니다!', error);
+                window.location.href = "404.html";
+            }
+        });
+    });
 
+    $(function () {
+        $('#following-btn').on('mouseenter', function () {
+            $('#following-btn').hide();
+            $('#unfollow-btn').fadeIn();
+        });
 
-    // $('.content').mouseenter(function () {
-    //     $('#original-content').hide();
-    //     $('#hover-content').show();
-    // });
-    // $('.content').mouseleave(function () {
-    //     $('#hover-content').fadeOut(1000, function () {
-    //         $('#original-content').fadeIn(1000);
-    //     });
-    // });
-
-
+        $('#unfollow-btn').on('mouseleave', function () {
+            $('#unfollow-btn').hide();
+            $('#following-btn').fadeIn();
+        });
+    });
 });
