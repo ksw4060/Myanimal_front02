@@ -1,4 +1,3 @@
-console.log('프로필 js 로딩');
 
 $(document).ready(async function () {
     $('.hidden').hide();
@@ -42,8 +41,6 @@ $(document).ready(async function () {
     // newImage.css({ width: '80%', height: '80%' });
     // profileImage.append(newImage);
 
-    console.log(response.profile_img);
-    console.log('테스트');
     if (response.profile_img == '' || response.profile_img == null || typeof response.profile_img === 'undefined') {
         $('#img').attr('src', 'https://blog.kakaocdn.net/dn/0WCOh/btsftHK9GZz/zWlQWK1gtgPiD0zTWIefek/img.gif');
     } else {
@@ -96,7 +93,6 @@ $(document).ready(async function () {
 
     // 수정 버튼 클릭 시
     $('#edit-btn').click(function () {
-        // console.log('히든 보이게')
         $('.hidden').show();
 
         $('#withdrawal-btn').hide();
@@ -106,7 +102,6 @@ $(document).ready(async function () {
 
     // 취소 버튼 클릭 시
     $('#cancel-btn').click(function () {
-        // console.log('히든 숨기기')
         $('.hidden').hide();
         $('#withdrawal-btn').show();
         $('#edit-btn').show();
@@ -163,7 +158,6 @@ $(document).ready(async function () {
 
     // 이미지 띄우기, 아직 업로드X
     $('#image-input').click(function () {
-        console.log('이미지 띄우기');
         $('#image-input').change(function () {
             var file = this.files[0];
             var reader = new FileReader();
