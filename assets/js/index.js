@@ -62,7 +62,6 @@ window.onload = async function loadArticles() {
   const data = await response.json();
   // 페이지네이션한 게시글들은 object객체로 받아옴 해당 객체를 배열로 만들고 null값은 건너뛰어서 오류발생 활률을 낮춤
   const articles = Array.isArray(data) ? data : Object.values(data).filter(article => article != null);
-  console.log(articles)
 
 
 
@@ -72,7 +71,6 @@ window.onload = async function loadArticles() {
   // data의 results에 json 형식으로 article 데이터를 가져옴 그냥 article.id로 하니까 안가져와져서 여차저차 찾아냄
   data.results.forEach((article) => {
 
-    console.log("\"" + article.article_img + "\"")
     const article_img_element = document.getElementById("article_imgs");
 
     const articleCard = document.createElement('div');
@@ -135,9 +133,7 @@ window.onload = async function loadArticles() {
 
 //고양이 api 가져오기
 async function CatCategory() {
-  console.log("고양이 버튼 실행")
   const petarticles = await getCatArticles();
-  console.log(petarticles)
 
   const petarticlesList = document.getElementById('article-list');
   petarticlesList.innerHTML = ''; // 기존에 표시된 게시글 초기화
@@ -148,7 +144,8 @@ async function CatCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
-        <div class="card h-100">
+    <a style="text-decoration:none; color:black;" href="article_detail.html?id=${article.id}">
+    <div class="card h-100">
           <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
           <div class="card-body p-4">
             <div class="text-center">
@@ -156,14 +153,7 @@ async function CatCategory() {
               <label for="" class="category">${article.category}</label>
               <hr>
               <label for="" class="user">${article.user}</label>
-            </div>
-          </div>
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center">
-              <a class="btn me-2 btn_org" href="#">보러가기</a>
-            </div>
-          </div>
-        </div>
+              </a>
       `;
 
     petarticlesList.appendChild(articleCard);
@@ -176,9 +166,7 @@ async function CatCategory() {
 
 //강아지 api 가져오기
 async function DogCategory() {
-  console.log("강아지 버튼 실행")
   const petarticles = await getDogArticles();
-  console.log(petarticles)
 
   const petarticlesList = document.getElementById('article-list');
   petarticlesList.innerHTML = ''; // 기존에 표시된 게시글 초기화
@@ -189,23 +177,17 @@ async function DogCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
+    <a style="text-decoration:none; color:black;" href="article_detail.html?id=${article.id}">
     <div class="card h-100">
-      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-      <div class="card-body p-4">
-        <div class="text-center">
-          <h5 class="fw-bolder">${article.article_title}</h5>
-          <label for="" class="category">${article.category}</label>
-          <hr>
-          <label for="" class="user">${article.user}</label>
-        </div>
-      </div>
-      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-        <div class="text-center">
-          <a class="btn me-2 btn_org" href="#">보러가기</a>
-        </div>
-      </div>
-    </div>
-  `;
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+          <div class="card-body p-4">
+            <div class="text-center">
+              <h5 class="fw-bolder">${article.article_title}</h5>
+              <label for="" class="category">${article.category}</label>
+              <hr>
+              <label for="" class="user">${article.user}</label>
+              </a>
+      `;
 
 
     petarticlesList.appendChild(articleCard);
@@ -213,10 +195,10 @@ async function DogCategory() {
 }
 
 
+// birdCategory('새')
 
 async function birdCategory() {
   const petarticles = await getBirdArticles();
-  console.log(petarticles)
 
   const petarticlesList = document.getElementById('article-list');
   petarticlesList.innerHTML = ''; // 기존에 표시된 게시글 초기화
@@ -227,72 +209,28 @@ async function birdCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
+    <a style="text-decoration:none; color:black;" href="article_detail.html?id=${article.id}">
     <div class="card h-100">
-      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-      <div class="card-body p-4">
-        <div class="text-center">
-          <h5 class="fw-bolder">${article.article_title}</h5>
-          <label for="" class="category">${article.category}</label>
-          <hr>
-          <label for="" class="user">${article.user}</label>
-        </div>
-      </div>
-      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-        <div class="text-center">
-          <a class="btn me-2 btn_org" href="#">보러가기</a>
-        </div>
-      </div>
-    </div>
-  `;
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+          <div class="card-body p-4">
+            <div class="text-center">
+              <h5 class="fw-bolder">${article.article_title}</h5>
+              <label for="" class="category">${article.category}</label>
+              <hr>
+              <label for="" class="user">${article.user}</label>
+              </a>
+      `;
 
     petarticlesList.appendChild(articleCard);
   })
 
 };
 
-// birdCategory('새')
-
-async function fishCategory() {
-  const petarticles = await getFishArticles();
-  console.log(petarticles)
-
-  const petarticlesList = document.getElementById('article-list');
-  petarticlesList.innerHTML = ''; // 기존에 표시된 게시글 초기화
-
-  petarticles.forEach((article) => {
-    const articleCard = document.createElement('div');
-    articleCard.classList.add('col', 'mb-5');
-    // 아래 html이 반복되어 입력됨
-    // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
-    articleCard.innerHTML = `
-    <div class="card h-100">
-      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-      <div class="card-body p-4">
-        <div class="text-center">
-          <h5 class="fw-bolder">${article.article_title}</h5>
-          <label for="" class="category">${article.category}</label>
-          <hr>
-          <label for="" class="user">${article.user}</label>
-        </div>
-      </div>
-      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-        <div class="text-center">
-          <a class="btn me-2 btn_org" href="#">보러가기</a>
-        </div>
-      </div>
-    </div>
-  `;
-
-    petarticlesList.appendChild(articleCard);
-  })
-
-};
 
 // fishCategory('물고기')
 
-async function snailCategory() {
-  const petarticles = await getSnailArticles();
-  console.log(petarticles)
+async function fishCategory() {
+  const petarticles = await getFishArticles();
 
   const petarticlesList = document.getElementById('article-list');
   petarticlesList.innerHTML = ''; // 기존에 표시된 게시글 초기화
@@ -303,24 +241,17 @@ async function snailCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
+    <a style="text-decoration:none; color:black;" href="article_detail.html?id=${article.id}">
     <div class="card h-100">
-      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-      <div class="card-body p-4">
-        <div class="text-center">
-          <h5 class="fw-bolder">${article.article_title}</h5>
-          <label for="" class="category">${article.category}</label>
-          <hr>
-          <label for="" class="user">${article.user}</label>
-        </div>
-      </div>
-      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-        <div class="text-center">
-          <a class="btn me-2 btn_org" href="#">보러가기</a>
-        </div>
-      </div>
-    </div>
-  `;
-
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+          <div class="card-body p-4">
+            <div class="text-center">
+              <h5 class="fw-bolder">${article.article_title}</h5>
+              <label for="" class="category">${article.category}</label>
+              <hr>
+              <label for="" class="user">${article.user}</label>
+              </a>
+      `;
     petarticlesList.appendChild(articleCard);
   })
 
@@ -328,9 +259,8 @@ async function snailCategory() {
 
 // snailCategory('달팽이')
 
-async function stoneCategory() {
-  const petarticles = await getStoneArticles();
-  console.log(petarticles)
+async function snailCategory() {
+  const petarticles = await getSnailArticles();
 
   const petarticlesList = document.getElementById('article-list');
   petarticlesList.innerHTML = ''; // 기존에 표시된 게시글 초기화
@@ -341,24 +271,17 @@ async function stoneCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
+    <a style="text-decoration:none; color:black;" href="article_detail.html?id=${article.id}">
     <div class="card h-100">
-      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-      <div class="card-body p-4">
-        <div class="text-center">
-          <h5 class="fw-bolder">${article.article_title}</h5>
-          <label for="" class="category">${article.category}</label>
-          <hr>
-          <label for="" class="user">${article.user}</label>
-        </div>
-      </div>
-      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-        <div class="text-center">
-          <a class="btn me-2 btn_org" href="#">보러가기</a>
-        </div>
-      </div>
-    </div>
-  `;
-
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+          <div class="card-body p-4">
+            <div class="text-center">
+              <h5 class="fw-bolder">${article.article_title}</h5>
+              <label for="" class="category">${article.category}</label>
+              <hr>
+              <label for="" class="user">${article.user}</label>
+              </a>
+      `;
     petarticlesList.appendChild(articleCard);
   })
 
@@ -366,9 +289,8 @@ async function stoneCategory() {
 
 // stoneCategory('애완돌')
 
-async function turtleCategory() {
-  const petarticles = await getTurtleArticles();
-  console.log(petarticles)
+async function stoneCategory() {
+  const petarticles = await getStoneArticles();
 
   const petarticlesList = document.getElementById('article-list');
   petarticlesList.innerHTML = ''; // 기존에 표시된 게시글 초기화
@@ -379,29 +301,53 @@ async function turtleCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
+    <a style="text-decoration:none; color:black;" href="article_detail.html?id=${article.id}">
     <div class="card h-100">
-      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-      <div class="card-body p-4">
-        <div class="text-center">
-          <h5 class="fw-bolder">${article.article_title}</h5>
-          <label for="" class="category">${article.category}</label>
-          <hr>
-          <label for="" class="user">${article.user}</label>
-        </div>
-      </div>
-      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-        <div class="text-center">
-          <a class="btn me-2 btn_org" href="#">보러가기</a>
-        </div>
-      </div>
-    </div>
-  `;
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+          <div class="card-body p-4">
+            <div class="text-center">
+              <h5 class="fw-bolder">${article.article_title}</h5>
+              <label for="" class="category">${article.category}</label>
+              <hr>
+              <label for="" class="user">${article.user}</label>
+              </a>
+      `;
+
     petarticlesList.appendChild(articleCard);
   })
 
 };
 
 // turtleCategory('거북이')
+
+async function turtleCategory() {
+  const petarticles = await getTurtleArticles();
+
+  const petarticlesList = document.getElementById('article-list');
+  petarticlesList.innerHTML = ''; // 기존에 표시된 게시글 초기화
+
+  petarticles.forEach((article) => {
+    const articleCard = document.createElement('div');
+    articleCard.classList.add('col', 'mb-5');
+    // 아래 html이 반복되어 입력됨
+    // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
+    articleCard.innerHTML = `
+    <a style="text-decoration:none; color:black;" href="article_detail.html?id=${article.id}">
+    <div class="card h-100">
+          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+          <div class="card-body p-4">
+            <div class="text-center">
+              <h5 class="fw-bolder">${article.article_title}</h5>
+              <label for="" class="category">${article.category}</label>
+              <hr>
+              <label for="" class="user">${article.user}</label>
+              </a>
+      `;
+    petarticlesList.appendChild(articleCard);
+  })
+
+};
+
 
 
 
