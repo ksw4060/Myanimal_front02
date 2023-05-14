@@ -179,8 +179,6 @@ async function putProfile() {
     const image = $('#image-input')[0].files[0];
     const category = $('#mySelect').val();
     const myNickname = $('#myNickname').val();
-    console.log(image);
-    console.log(category);
     const formData = new FormData();
 
     formData.append('image', image);
@@ -196,13 +194,8 @@ async function putProfile() {
     }
 
     let token = localStorage.getItem("access");
-    // console.log('토큰이 있나?');
-    // console.log(token);
-    // console.log('유저아이디가?')
     let urlParam = new URLSearchParams(window.location.search);
     user_id = urlParam.get('user_id');
-    console.log(user_id)
-    console.log('없다고?')
 
     const response = await fetch(`${backend_base_url}/users/profile/${user_id}/`, {
         method: 'PATCH',
@@ -211,7 +204,6 @@ async function putProfile() {
         },
         body: formData
     })
-    // console.log(response);
     if (response.status === 200) {
         alert('수정 성공')
         // alert(response.status)

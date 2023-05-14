@@ -17,10 +17,8 @@ async function ArticleDetail(article_id) {
     })
 
     response_json = await response.json()
-    console.log(response_json)
 
     const category = document.querySelector('#category');
-    // 딱히 안써도 가져와지는것같아서 주석처리했습니댜
     const author = document.querySelector('#author');
     const article_title = document.querySelector('#article-title');
     const article_created_at = document.querySelector('#article-created-at');
@@ -29,7 +27,6 @@ async function ArticleDetail(article_id) {
     //백 이미지 링크를 통해 가져오도록 햇습니댜
     const article_img_url = `${backend_base_url}${response_json.article_img}`;
     const article_img_element = document.getElementById("article_img")
-    // console.log(article_img_element)
 
     // const detail_product_img_url = `${BACKEND_API}/${response_json.image}`
     // detail_product_img.setAttribute('src', detail_product_img_url)
@@ -104,7 +101,6 @@ async function save_comment() {
 async function loadComments(article_id) {
     const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/`);
     const comments = await response.json();
-    console.log(comments)
 
 
 
@@ -156,7 +152,6 @@ async function editComment(comment_id) {
 
     const textarea = document.createElement('textarea');
     textarea.classList.add('form-control');
-    console.log(before_comment.innerText)
     textarea.value = before_comment.innerText;
 
     const saveButton = document.createElement('button');
@@ -278,6 +273,5 @@ async function CountBookmark() {
         method: 'GET',
     })
     response_json = await response.json()
-    console.log(response_json.bookmarks)
     document.getElementById('bookmark-count').innerText = response_json.bookmarks
 }

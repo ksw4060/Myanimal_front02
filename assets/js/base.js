@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 const payload_parse = JSON.parse(payload)
-                console.log(payload_parse.account)
 
                 const intro = document.getElementById("intro");
                 if (intro) {
