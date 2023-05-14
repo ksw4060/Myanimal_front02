@@ -14,13 +14,13 @@
     <script src="/assets/js/article_detail.js"></script>
     <script src="/assets/js/base.js"></script>
 
-    
+
 
     <style> </style>
 </head>
 
 <body>
-   
+
     <!-- 상단 네비게이션바 -->
 
     <div id="navbar-container"></div>
@@ -48,7 +48,7 @@
 
         <div class="maintexter">
 
-            <img src="https://i.ibb.co/Ssm90Cq/4164335-1582361978747.gif" class="card-img-top" alt="...">
+            <img id="article_img" src="" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 id="article-content" class="card-title">Card title</h5>
 
@@ -67,19 +67,19 @@
 
 
         <!-- 좋아요! -->
-        
+
         <div class="card text-center" style="border:none">
-            <a href="#" onclick = "ClickHeart()" style="text-decoration: none;">❤️</a>
-            <span id = "heart-count">좋아요 개수</span>
+            <a href="#" onclick="ClickHeart()" style="text-decoration: none;">❤️</a>
+            <span id="heart-count">좋아요 개수</span>
         </div>
 
         <!-- 북마크 -->
-        
+
         <div class="card text-center" style="border:none">
-            <a href="#" onclick = "ClickBookmark()" style="text-decoration: none;">bookmark</a>
-            <span id = "bookmark-count">북마크 개수</span>
+            <a href="#" onclick="ClickBookmark()" style="text-decoration: none;">bookmark</a>
+            <span id="bookmark-count">북마크 개수</span>
         </div>
-        
+
 
         <!-- 댓글 작성 시작 -->
         <div id="comment_area">
@@ -95,7 +95,7 @@
         </div> -->
 
 
-        <div id = "comment-list" class="card text-center">
+        <div id="comment-list" class="card text-center">
 
 
             <!-- 댓글 목록 자리 -->
@@ -104,7 +104,7 @@
         </div>
     </div>
 
-    
+
     <!-- 하단 푸터 시작-->
 
     <div id="footer-container"></div>
