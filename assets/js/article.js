@@ -30,7 +30,7 @@ async function save_article() {
     if (response.status == 201) {
         alert("글 작성 완료")
         window.location.replace('index.html')// 0514 17:10 채연 수정 : 글작성시 홈화면 replace 주석처리 되어있던 부분 수정
-    } else if (title == '' || content == '' || category == '') {
+    } else if (title == '' || content == '' ||img =='' || category == '') {
         alert("빈칸을 입력해 주세요.")
     }
 
