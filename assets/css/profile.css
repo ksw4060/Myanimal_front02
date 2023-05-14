@@ -30,3 +30,15 @@
 /* .hidden {
     display: none;
 } */
+
+#profile-container{
+    background-color: #FFEED9;
+}
+
+#profile-container .card{
+    background-color: transparent;
+}
+
+#profile-container div{
+    padding: 1vmin;
+}
