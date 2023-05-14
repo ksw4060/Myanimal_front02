@@ -26,7 +26,7 @@ async function handleSignup() {
         alert("빈칸을 입력해 주세요.")
         
     }else if (response.status == 400){
-        alert("이미 존재하는 이메일입니다.");
+        alert("이미 존재하는 아이디 또는 이메일입니다.");
     }
 }
 
