@@ -34,9 +34,9 @@
     <div id="navbar-container"></div>
 
     <!-- 메인 -->
-    <div class="d-flex align-items-center justify-content-center vh-100" style="background-color: #808080;">
-        <div class="container" style="width:80%; background-color: #0067a3;">
-            <div id="permissions" style="background-color: #000000;">
+    <div class="d-flex align-items-center justify-content-center vh-100" ">
+        <div class="container" style="width:80%; ">
+            <div id="permissions" >
                 <!-- 로그인한 작성자 수정 기능 -->
                 <div class="permission">
                     <button id="edit-btn" class="btn btn-warning">수정</button>
@@ -55,23 +55,23 @@
 
 
 
-            <div class=" container" style="background-color: #F0F0F0;">
-                <form style="background-color: #D3D3D3;">
+            <div class=" container" id="profile-container" >
+                <form >
                     <div class="row row-cols-xs-1 row-cols-sm-2 justify-content-center" id="profile"
-                        style="background-color: #FAFAD2;">
-                        <div class="col" style="min-width:300px; min-height: 300px; background-color: #808000;">
-                            <div class="image-container" style="background-color: #BDBDBD;">
+                         >
+                        <div class="col" style="min-width:300px; min-height: 300px;  ">
+                            <div class="image-container"  >
                                 <!-- <div class="col align-self-center text-center" style="background-color: #0067a3;">프로필 이미지
                                 </div> -->
                                 <div id="profile-image" class="col card align-self-center">
-                                    <img id="img" src="#" alt="이미지 미리보기">
+                                    <img id="img" src="#" alt="이미지 미리보기" style="max-width : 300px">
                                 </div>
                                 <input type="file" id="image-input" class="hidden overlay"></input>
                             </div>
                         </div>
 
-                        <div class="col" style="min-width:400px; background-color: #FFE4C4;">
-                            <div class="card" style="background-color: #ffeed9; border:0px;">
+                        <div class="col" style="min-width:300px;">
+                            <div class="card" style="  border:0px;">
 
                                 <h1>
                                     <input type="text" class="form-control form-control-sm hidden" id="myNickname"
@@ -80,7 +80,7 @@
                                 </h1>
 
                                 <div class="card-text" id="email">email</div>
-                                <hr style="background:#0067a3; height:10px; border:0;">
+                                <hr style=" height:10px; border:0;">
 
                                 <div class="content" style="height: 50px;">
                                     <div>
@@ -102,7 +102,7 @@
                                         <span id="category" class="original-content">카테고리</span>
                                     </div>
                                 </div>
-                                <div class="card" style="background-color: #FFA500; border:0px;">
+                                <div class="card" style=" border:0px;">
                                     <div>작성한 게시글:
                                         <span id="articles_count">작성한 게시글 수</span>
                                     </div>
@@ -111,9 +111,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row row-cols-xs-1 row-cols-sm-2 justify-content-center"
-                                style="background-color: #F08080;">
-                                <div class="col card" style="background-color: #FF00FF;">
+                            <div class="row row-cols-xs-1 row-cols-sm-2 justify-content-center">
+                                <div class="col card" style="border : none">
                                     <div id="followings-box">팔로잉:
                                         <span id="followings" class="text-decoration-underline text-danger">팔로잉
                                             수</span>
@@ -123,7 +122,7 @@
                                             수</span>
                                     </div>
                                 </div>
-                                <div class="col card" style="background-color: #00FF00;">
+                                <div class="col card" style="border : none">
                                     <div>좋아요한 게시글:
                                         <a href="./hearts_article.html" id="hearted_articles_count">좋아요한 게시글 수</a>
                                     </div>
