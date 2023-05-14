@@ -22,6 +22,10 @@
     object-fit: cover;
 }
 
+.modal-body {
+    text-align: left;
+}
+
 /* css가 늦게 읽혀지며 히든이 잘 안된다. */
 /* .hidden {
     display: none;

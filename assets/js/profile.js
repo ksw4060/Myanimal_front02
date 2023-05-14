@@ -45,8 +45,8 @@ $(document).ready(async function () {
     }
 
     // 프로필 이미지 처리
-    const profileImage = $('#profile-image');
-    profileImage.empty();
+    // const profileImage = $('#profile-image');
+    // profileImage.empty();
 
     // const newImage = $('<img>');
     // if (response.profile_img = '') {
@@ -65,7 +65,7 @@ $(document).ready(async function () {
     }
 
     $('#img').addClass('rounded mx-auto d-block view-img');
-    $('#img').css({ width: '80%', height: '80%' });
+    $('#img').css({ width: '100%', height: '100%' });
 
     // 닉네임 처리
     if (!response.nickname) {
@@ -161,7 +161,7 @@ $(document).ready(async function () {
             }
 
             if (file.size > maxSize) {
-                alert('이미지 파일 크기는 5MB를 초과할 수 없습니다.');
+                alert('이미지 파일 크기는 3KB를 초과할 수 없습니다.');
                 return;
             }
 
@@ -308,25 +308,25 @@ $(document).ready(async function () {
         // 팔로잉을 클릭하면
         $('#followings-box').on('click', function () {
             const html = `
-                <h3>팔로잉 리스트</h3>
               <ul>
                 ${response.followings.map(following => `<li>${following}</li>`).join('')}
               </ul>
             `;
-            const popup = window.open('', 'popup', 'width=500,height=300');
-            popup.document.body.innerHTML = html;
+            $('#followModalLabel').text('팔로잉 목록');
+            $('#followModal').modal('show');
+            $('#followModal .modal-body').html(html);
         });
 
         // 팔로워를 클릭하면
         $('#followers-box').on('click', function () {
             const html = `
-              <h3>팔로워 리스트</h3>
               <ul>
                 ${response.followers.map(follower => `<li>${follower}</li>`).join('')}
               </ul>
             `;
-            const popup = window.open('', 'popup', 'width=500,height=300');
-            popup.document.body.innerHTML = html;
+            $('#followModalLabel').text('팔로워 목록');
+            $('#followModal').modal('show');
+            $('#followModal .modal-body').html(html);
         });
     });
 });
