@@ -110,7 +110,7 @@
             </div>
             <div class="input-group mb-3">
                 <form id="imgForm">
-                    <input type="file" class="form-control" id="myFile">
+                    <input type="file" class="form-control" id="myFile" onchange="setThumbnail(event);">
             </div>
             <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="content"
@@ -119,9 +119,11 @@
             </div>
         </div>
         <div style="width: 500px; height: 518px; box-shadow: 0px 0px 3px 0px gray; margin:auto;">
-            <!-- 기본 이미지는 onerror 뒤 이미지입니다. -->
-            <img id="img" src="#" alt="이미지 미리보기" style="width: 500px; height: 500px;"
-                onerror="this.src='default_img/img.gif'">
+
+            <!-- 0514 17:40 채연수정 : 이미지 미리보기 태그/함수 생성 및 기본이미지 삭제 -->
+            <div id="imgthumbnail"></div>
+            <!-- <img id="imgthumbnail" src="#" alt="이미지 미리보기" style="width: 500px; height: 500px;"
+                onerror="this.src='default_img/img.gif'"> -->
 
         </div>
     </div>
