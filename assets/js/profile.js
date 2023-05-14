@@ -83,7 +83,7 @@ $(document).ready(async function () {
     $('#receive_hearts_count').text(response3);
 
     // 팔로잉 수
-    $('#followings').text(response.followers.length);
+    $('#followings').text(response.followings.length);
 
     // 팔로워 수
     $('#followers').text(response.followers.length);
