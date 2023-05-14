@@ -52,34 +52,7 @@ let changePage = function (page) {
   //json파일의 id값이 10번출력됨.
 }
 
-// let rowPerPage = 8; //한 페이지당 표시되는 게시글의 수
-// const rows = document.querySelectorAll('#my-table ul li');
-// const rowsCount = rows.length; // 게시글의 갯수 카운트
-// const pageCount = Math.ceil(rowsCount / rowPerPage); //총 갯수/모든게시물을 나눳을때 무조건 올림으로 페이지를 만들어줌
-// const page = document.querySelector('#page'); //id 지정해준 ul을 쿼리셋으로 저장
-// let current_page = 1; //현재페이지는 1
 
-// async function pagination() {
-
-//     //페이지네이션 생성
-//     /* <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li> 
-//     for (초기값;조건;증감){}
-//     */
-
-//     for (let i = 1; i <= pageCount; i++) {
-//         page.innerHTML = `<li class="page-item active" aria-current="page"><a class="page-link" href="">${i}</a></li>`;
-//         page.innerHTML += `<li class="page-item active" aria-current="page"><a class="page-link" href="">${i + 1}</a></li>`;
-//     }
-
-//     console.log(rows);
-//     function displayRow(idx) {
-//         const rowsArray = [...rows];
-//         console.log(rowsArray)
-//     }
-
-// }
-
-// pagination();
 
 
 
@@ -93,15 +66,18 @@ window.onload = async function loadArticles() {
 
 
 
+
   const articleList = document.getElementById('article-list');
 
   // data의 results에 json 형식으로 article 데이터를 가져옴 그냥 article.id로 하니까 안가져와져서 여차저차 찾아냄
   data.results.forEach((article) => {
 
+    console.log("\"" + article.article_img + "\"")
+    const article_img_element = document.getElementById("article_imgs");
+
     const articleCard = document.createElement('div');
     articleCard.classList.add('col', 'mb-5');
     const title = article.article_title;
-    const image = article.article_image;
     const category = article.category;
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
@@ -109,7 +85,7 @@ window.onload = async function loadArticles() {
     articleCard.innerHTML = `
     <a style="text-decoration:none; color:black;" href="article_detail.html?id=${article.id}">
     <div class="card h-100">
-      <img class="card-img-top" src="${image ? image : './assets/images/IMG_8257.jpg'}" alt="" />
+    <img class="card-img-top" id="article_imgs" src="${article.article_img ? `${article.article_img}` : `./assets/images/IMG_8257.jpg`}" alt="" />
       <div class="card-body p-4">
         <div class="text-center">
           <h5 class="fw-bolder">${title}</h5>
