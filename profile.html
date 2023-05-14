@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>집사는 집사하느라 집못사 | 프로필</title>
+    <title>프로필</title>
     <link href="/assets/css/profile.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -19,6 +19,7 @@
         crossorigin="anonymous"></script>
 
     <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/api.js"></script> 
 
 </head>
 
@@ -35,98 +36,113 @@
     <!-- 상단 네비게이션바 -->
     <div id="navbar-container"></div>
 
-    <!-- <h1>프로필 상세 페이지</h1> -->
-    <div class="permission">
-        <button id="edit-btn" class="btn btn-warning">수정</button>
-        <!-- <button class="hidden btn btn btn-dark" id="confirm-btn" onclick="putProfile()">완료</button> -->
-        <button class="hidden btn btn btn-dark" id="confirm-btn">완료</button>
-        <button class="hidden btn btn-secondary" id="cancel-btn">취소</button>
-    </div>
-    <div class="d-flex align-items-center justify-content-center vh-100">
-        <div class="container">
-            <form>
-                <div class="row row-cols-1 row-cols-md-2 justify-content-center" id="profile">
-                    <div class="image-container">
-                        <div id="profile-image" class="col card align-self-center"
-                            style="background-color: #ffeed9; border:0px;">
-                            <img id="img" src="#" alt="이미지 미리보기">
-                        </div>
-                        <input type="file" id="image-input" class="hidden overlay"></input>
-                    </div>
 
-                    <div class="col">
-                        <div class="card" style="background-color: #ffeed9; border:0px;">
+    <div class="container text-center">
+        <!-- <h1>프로필 상세 페이지</h1> -->
+        <div class="row row-cols-1 row-cols-md-2" id="profile">
+            <div id="profile-image" class="col align-self-center">프로필 이미지</div>
 
-                            <h1>
-                                <input type="text" class="form-control form-control-sm hidden" id="myNickname"
-                                    placeholder="닉네임">
-                                <span id="nickname" class="original-content">Failed to load data</span>
-                            </h1>
+            <div class="permission">
+                <button id="edit-btn" class="btn btn-warning">수정</button>
+                <button id="withdrawal-btn" class="btn btn-danger">탈퇴</button>
+                <button id="withdrawal2-btn" class="btn btn-danger withdrawal">탈퇴</button>
+                <button id="cancel-withdrawal-btn" class="btn btn-secondary withdrawal">취소</button>
+                <button id="cancel-btn" class="hidden btn btn-secondary">취소</button>
+                <!-- <button class="hidden btn btn btn-dark" id="confirm-btn" onclick="putProfile()">완료</button> -->
+                <button class="hidden btn btn btn-dark" id="confirm-btn">완료</button>
 
-                            <p class="card-text" id="email">Failed to load data</p>
-                            <hr style="background:#0067a3; height:10px; border:0;">
+                <div class="form-floating withdrawal">
+                    <input type="password" class="form-control" id="password-input" placeholder="비밀번호">
+                    <label for="floatingPassword">비밀번호</label>
+                </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-center vh-100">
+                <div class="container">
+                    <form>
+                        <div class="row row-cols-1 row-cols-md-2 justify-content-center" id="profile">
+                            <div class="image-container">
+                                <div id="profile-image" class="col card align-self-center"
+                                    style="background-color: #ffeed9; border:0px;">
+                                    <img id="img" src="#" alt="이미지 미리보기">
+                                </div>
+                                <input type="file" id="image-input" class="hidden overlay"></input>
+                            </div>
 
-                            <div class="content" style="height: 50px;">
-                                <p>
-                                    최애동물:
-                                    <span class="hidden" style="display: inline-block;">
-                                        <select id="mySelect" class="form-select form-select-sm"
-                                            aria-label=".form-select-sm example">
-                                            <!-- <option selected>Open this select menu</option> -->
-                                            <!-- 추후 직접 데이터베이스에서 가져오기? -->
-                                            <option value="cat">고양이</option>
-                                            <option value="dog">개</option>
-                                            <option value="bird">새</option>
-                                            <option value="fish">물고기</option>
-                                            <option value="snail">달팽이</option>
-                                            <option value="stone">돌</option>
-                                            <option value="turtle">거북이</option>
-                                        </select>
-                                    </span>
-                                    <span id="category" class="original-content">Failed to load data</span>
-                                </p>
+                            <div class="col">
+                                <div class="card" style="background-color: #ffeed9; border:0px;">
+
+                                    <h1>
+                                        <input type="text" class="form-control form-control-sm hidden" id="myNickname"
+                                            placeholder="닉네임">
+                                        <span id="nickname" class="original-content">nickname</span>
+                                    </h1>
+
+                                    <p class="card-text" id="email">email</p>
+                                    <hr style="background:#0067a3; height:10px; border:0;">
+
+                                    <div class="content" style="height: 50px;">
+                                        <p>
+                                            최애동물:
+                                            <span class="hidden" style="display: inline-block;">
+                                                <select id="mySelect" class="form-select form-select-sm"
+                                                    aria-label=".form-select-sm example">
+                                                    <!-- <option selected>Open this select menu</option> -->
+                                                    <!-- 추후 직접 데이터베이스에서 가져오기? -->
+                                                    <option value="cat">고양이</option>
+                                                    <option value="dog">개</option>
+                                                    <option value="bird">새</option>
+                                                    <option value="fish">물고기</option>
+                                                    <option value="snail">달팽이</option>
+                                                    <option value="stone">돌</option>
+                                                    <option value="turtle">거북이</option>
+                                                </select>
+                                            </span>
+                                            <span id="category" class="original-content">카테고리</span>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <br>
+                        <div class="row row-cols-2 row-cols-md2 justify-content-center align-items-center">
+                            <div class="col">
+                                <div class="card" style="background-color: #ffeed9; border:0px;">
+                                    <p>작성한 게시글:
+                                        <span id="articles_count">작성한 게시글 수</span>
+                                    </p>
+                                    <p>받은 좋아요:
+                                        <span id="receive_hearts_count">받은 좋아요 수</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col d-flex justify-content-between align-items-center">
+                                <div class="card" style="width:45%; background-color: #ffeed9; border:0px;">
+                                    <p>followings:
+                                        <span id="followings">팔로잉 수</span>
+                                    </p>
+                                    <p>followers:
+                                        <span id="followers">팔로워 수</span>
+                                    </p>
+                                </div>
+                                <div class="card" style="width:45%; background-color: #ffeed9; border:0px;">
+                                    <p>좋아요한 게시글:
+                                        <span id="hearted_articles_count">좋아요한 게시글 수</span>
+                                    </p>
+                                    <p>북마크한 게시글:
+                                        <span id="bookmarked_articles_count">북마크한 게시글 수</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <br>
-                <div class="row row-cols-2 row-cols-md2 justify-content-center align-items-center">
-                    <div class="col">
-                        <div class="card" style="background-color: #ffeed9; border:0px;">
-                            <p>작성한 게시글:
-                                <span id="articles_count">Failed to load data</span>
-                            </p>
-                            <p>받은 좋아요:
-                                <span id="receive_hearts_count">Failed to load data</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col d-flex justify-content-between align-items-center">
-                        <div class="card" style="width:45%; background-color: #ffeed9; border:0px;">
-                            <p>followings:
-                                <span id="followings">Failed to load data</span>
-                            </p>
-                            <p>followers:
-                                <span id="followers">Failed to load data</span>
-                            </p>
-                        </div>
-                        <div class="card" style="width:45%; background-color: #ffeed9; border:0px;">
-                            <p>좋아요한 게시글:
-                                <span id="hearted_articles_count">Failed to load data</span>
-                            </p>
-                            <p>북마크한 게시글:
-                                <span id="bookmarked_articles_count">Failed to load data</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+            </div>
 
-    <!-- 하단 푸터 시작-->
-    <div id="footer-container"></div>
-    <!-- 하단 푸터 끝-->
+
+            <!-- 하단 푸터 시작-->
+            <div id="footer-container"></div>
+            <!-- 하단 푸터 끝-->
+
 
 </body>
 
