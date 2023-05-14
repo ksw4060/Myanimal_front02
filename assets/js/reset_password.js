@@ -30,8 +30,8 @@ async function handleResetPassword() {
 //비밀번호 재설정
 async function Set_Password() {
 
-    const password = document.getElementById("password").value;
-    const repassword = document.getElementById("repassword").value;
+    const password = document.getElementById("new-password").value;
+    const repassword = document.getElementById("new-password-confirm").value;
     const urlParams = new URLSearchParams(window.location.search);
     const uidb64 = urlParams.get('id').replace(/'/g, '').replace('$b', '');
     const token = urlParams.get('token').replace('$', '');
