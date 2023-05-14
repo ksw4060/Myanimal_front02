@@ -1,0 +1,10 @@
+.create {
+    border: 1px solid #FFEED9;
+    border-radius: 10px;
+    width: 70vw;
+    max-width: 500px;
+    height: auto;
+    margin: 10vh auto;
+    padding: 10px;
+    background-color: #fff8ef;
+}
