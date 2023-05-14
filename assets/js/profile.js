@@ -171,7 +171,7 @@ $(document).ready(async function () {
             var reader = new FileReader();
 
             // 파일 크기 제한 (단위: 바이트)
-            var maxSize = 5 * 1024 * 1024; // 예시로 5MB 제한
+            var maxSize = 3 * 100 * 1024; // 300KB 제한
 
             // 파일 유효성 검사
             var validImageTypes = ['image/jpeg', 'image/png', 'image/gif']; // 허용되는 이미지 파일의 MIME 유형들
@@ -209,6 +209,7 @@ $(document).ready(async function () {
         var imageFile = $('#image-input')[0].files[0];
         console.log("이미지파일");
         console.log(imageFile);
+
         // 선택한 카테고리 값 가져오기
         var selectedCategory = $('#mySelect').val();
         console.log("셀렉트 값");
@@ -223,7 +224,6 @@ $(document).ready(async function () {
         var formData = new FormData();
         // 이미지가 있으면 추가
         if (imageFile) {
-            console.log("이미지파일 있다는건가?")
             formData.append('profile_img', imageFile);
         }
         // 카테고리가 있으면 추가
@@ -239,7 +239,6 @@ $(document).ready(async function () {
         }
         // 닉네임은 필수
         formData.append('nickname', myNickname);
-        console.log("폼데이타");
 
         // 닉네임 필수다!
         if (!myNickname) {
@@ -282,34 +281,6 @@ $(document).ready(async function () {
     //     $('#hover-content').fadeOut(1000, function () {
     //         $('#original-content').fadeIn(1000);
     //     });
-    // });
-
-    // $('#edit-btn').click(function () {
-    //     $('.content').hide();
-    //     var inputElement = $('<input type="text">');
-    //     // 백엔드에서 카테고리 전체목록 가져와서 셀렉트 뜨게 하기...
-    //     // 하지만 오래 걸리니 셀렉트에서 우선 선택하기
-    //     // if (response.profile_img) {
-    //     //     newImage.attr('src', `${backend_base_url}${response.profile_img}`);
-    //     // } else {
-    //     //     newImage.attr('src', 'https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?size=626&ext=jpg');
-    //     // }
-    //     inputElement.addClass('rounded mx-auto');
-    //     inputElement.css({ width: '40%', height: '80%' });
-    //     $('.content_edit').append(inputElement);
-
-    //     var inputButton = $('<button>완료</button>');
-    //     inputButton.addClass('rounded mx-auto');
-    //     $('.content_edit').append(inputButton);
-
-    //     var inputButton2 = $('<button>취소</button>');
-    //     inputButton2.addClass('rounded mx-auto');
-    //     $('.content_edit').append(inputButton2);
-
-    //     var selectElement = $('<select></select>');
-
-
-    //     $('.content_edit').show();
     // });
 
 

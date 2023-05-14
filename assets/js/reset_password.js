@@ -21,7 +21,7 @@ async function handleResetPassword() {
 
     if (response.status === 200) {
         alert("비밀번호 재설정 이메일을 발송했습니다. 메일을 확인하고 재설정을 진행해주세요.");
-        location.replace('set_password.html')
+        location.reload();
     } else {
         alert(response_json["email"]);
     }
@@ -44,11 +44,11 @@ async function Set_Password() {
         method: 'PUT',
         body: JSON.stringify({ "password": password, "repassword": repassword, "uidb64": uidb64, "token": token })
     })
-
+    console.log(urlParams, uidb64)
     const result = await response.json()
     if (response.status === 200) {
         alert(result["message"])
-        location.replace('user.html')
+        location.replace('login.html')
 
     } else if (response.status == 401) {
         alert("링크가 유효하지 않습니다.")

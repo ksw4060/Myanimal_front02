@@ -1,3 +1,15 @@
+
+// 로그아웃
+async function handleLogout() {
+    event.preventDefault();
+    localStorage.removeItem("access")
+    localStorage.removeItem("refresh")
+    localStorage.removeItem("payload")
+    location.replace('index.html')
+}
+
+
+
 // 상단 네비바, 푸터 가져오기
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -35,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     logoutBtn.setAttribute("onclick", "handleLogout()");
 
                     newLi.appendChild(logoutBtn);
-                    
+
                     navbarRight.appendChild(newLi);
                 }
 
