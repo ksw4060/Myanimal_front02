@@ -47,3 +47,25 @@
     justify-content: center;
     margin: 0 auto;
 }
+
+
+.inputEmailForm{
+    width: 70vw;
+    max-width: 500px;
+
+    margin: 20vh auto;
+}
+
+.newPassword{
+    width: 70vw;
+    max-width: 500px;
+    margin: 20vh auto;
+}
+
+.newPassword button{
+    margin-top: 20px;
+}
+
+.newPassword h4{
+    margin-bottom: 20px;
+}

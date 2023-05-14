@@ -34,7 +34,7 @@ window.onload = fetch(`${backend_base_url}/articles/bookmarks/`, {
                 <!-- 보러가기 버튼-->
                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                     <div class="text-center"><a class="btn me-2 btn_org"
-                            href="http://127.0.0.1:8000/articles/${id}">보러가기</a></div>
+                            href="${frontend_base_url}/article_detail.html?id=${id}">보러가기</a></div>
                 </div>
             </div>
         </div>`
