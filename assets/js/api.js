@@ -8,7 +8,7 @@ $(document).ready(async function () {
     let urlParam = new URLSearchParams(window.location.search);
     let user_id = urlParam.get('user_id');
     console.log('유저아이디')
-    console.log(user_id);
+    // console.log(user_id);
 });
 
 /////////////////////////////////////////////////// 프로필 관련 api
@@ -256,13 +256,6 @@ async function putProfile() {
 // }
 //================
 
-// 로그아웃
-async function handleLogout() {
-    localStorage.removeItem("access")
-    localStorage.removeItem("refresh")
-    localStorage.removeItem("payload")
-    location.reload()
-}
 
 
 
