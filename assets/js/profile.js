@@ -255,8 +255,28 @@ $(document).ready(async function () {
         }
     });
 
-    // 팔로우 버튼을 누른다면? 아직 수정 안함.
-
+    // 팔로우 버튼을 누른다면?
+    $('#follow-btn').click(async function () {
+        const response = await $.ajax({
+            url: `${backend_base_url}/users/follow/${user_id}/`,
+            method: 'POST',
+            contentType: 'application/json',
+            dataType: "json",
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem("access"),
+                // localStorage.getItem("access")
+            },
+            success: function (response) {
+                alert('성공적으로 팔로우/언팔 처리되었습니다.');
+                // location.href = '/';
+            },
+            // 비밀번호가 일치 하지 않거나 비활성화한 사용자일 경우
+            error: function (error) {
+                alert('문제가 생긴 듯', error);
+                // location.reload();
+            }
+        });
+    });
 
     // $('.content').mouseenter(function () {
     //     $('#original-content').hide();
