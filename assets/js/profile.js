@@ -290,13 +290,15 @@ $(document).ready(async function () {
         });
     });
 
-    $('#following-btn').on('mouseenter', function () {
-        $('#unfollow-btn').show();
-        $('#following-btn').hide();
-    });
+    $(function () {
+        $('#following-btn').on('mouseenter', function () {
+            $('#following-btn').hide();
+            $('#unfollow-btn').fadeIn();
+        });
 
-    $('#unfollow-btn').on('mouseleave', function () {
-        $('#unfollow-btn').hide();
-        $('#following-btn').show();
+        $('#unfollow-btn').on('mouseleave', function () {
+            $('#unfollow-btn').hide();
+            $('#following-btn').fadeIn();
+        });
     });
 });
