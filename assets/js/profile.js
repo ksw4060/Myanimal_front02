@@ -45,8 +45,8 @@ $(document).ready(async function () {
     }
 
     // 프로필 이미지 처리
-    const profileImage = $('#profile-image');
-    profileImage.empty();
+    // const profileImage = $('#profile-image');
+    // profileImage.empty();
 
     // const newImage = $('<img>');
     // if (response.profile_img = '') {
@@ -65,7 +65,7 @@ $(document).ready(async function () {
     }
 
     $('#img').addClass('rounded mx-auto d-block view-img');
-    $('#img').css({ width: '80%', height: '80%' });
+    $('#img').css({ width: '100%', height: '100%' });
 
     // 닉네임 처리
     if (!response.nickname) {
@@ -108,36 +108,7 @@ $(document).ready(async function () {
     // 북마크한 게시글 수
     $('#bookmarked_articles_count').text(response.bookmarked_articles_count);
 
-    // 수정 버튼 클릭 시
-    $('#edit-btn').click(function () {
-        $('.hidden').show();
 
-        $('#withdrawal-btn').hide();
-        $('#edit-btn').hide();
-        $('.original-content').hide();
-    });
-
-    // 취소 버튼 클릭 시
-    $('#cancel-btn').click(function () {
-        $('.hidden').hide();
-        $('#withdrawal-btn').show();
-        $('#edit-btn').show();
-        $('.original-content').show();
-    });
-
-    // 탈퇴 버튼 클릭 시
-    $('#withdrawal-btn').click(function () {
-        $('#edit-btn').hide();
-        $('#withdrawal-btn').hide();
-        $('.withdrawal').show();
-    });
-
-    // 탈퇴 취소 버튼 클릭 시
-    $('#cancel-withdrawal-btn').click(function () {
-        $('.withdrawal').hide();
-        $('#edit-btn').show();
-        $('#withdrawal-btn').show();
-    });
 
     // 진짜로 탈퇴를 원하시겠습니까? >>> 팝업이나 모달로 나중에...
     // 탈퇴2 버튼 클릭 시
@@ -190,7 +161,7 @@ $(document).ready(async function () {
             }
 
             if (file.size > maxSize) {
-                alert('이미지 파일 크기는 5MB를 초과할 수 없습니다.');
+                alert('이미지 파일 크기는 3KB를 초과할 수 없습니다.');
                 return;
             }
 
@@ -291,14 +262,71 @@ $(document).ready(async function () {
     });
 
     $(function () {
+        // 수정 버튼 클릭 시
+        $('#edit-btn').click(function () {
+            $('.hidden').show();
+
+            $('#withdrawal-btn').hide();
+            $('#edit-btn').hide();
+            $('.original-content').hide();
+        });
+
+        // 취소 버튼 클릭 시
+        $('#cancel-btn').click(function () {
+            $('.hidden').hide();
+            $('#withdrawal-btn').show();
+            $('#edit-btn').show();
+            $('.original-content').show();
+        });
+
+        // 탈퇴 버튼 클릭 시
+        $('#withdrawal-btn').click(function () {
+            $('#edit-btn').hide();
+            $('#withdrawal-btn').hide();
+            $('.withdrawal').show();
+        });
+
+        // 탈퇴 취소 버튼 클릭 시
+        $('#cancel-withdrawal-btn').click(function () {
+            $('.withdrawal').hide();
+            $('#edit-btn').show();
+            $('#withdrawal-btn').show();
+        });
+
+        // 팔로잉 버튼에 마우스를 가져다 대면
         $('#following-btn').on('mouseenter', function () {
             $('#following-btn').hide();
             $('#unfollow-btn').fadeIn();
         });
 
+        // 언팔로우 버튼에서 마우스가 벗어나면
         $('#unfollow-btn').on('mouseleave', function () {
             $('#unfollow-btn').hide();
             $('#following-btn').fadeIn();
+        });
+
+        // 팔로잉을 클릭하면
+        $('#followings-box').on('click', function () {
+            const html = `
+              <ul>
+                ${response.followings.map(following => `<li>${following}</li>`).join('')}
+              </ul>
+            `;
+            $('#followModalLabel').text('팔로잉 목록');
+            $('#followModal').modal('show');
+            $('#followModal .modal-body').html(html);
+        });
+
+        // 팔로워를 클릭하면
+        $('#followers-box').on('click', function () {
+            const html = `
+              <ul>
+                ${response.followers.map(follower => `<li>${follower}</li>`).join('')}
+              </ul>
+            `;
+            $('#followModalLabel').text('팔로워 목록');
+            $('#followModal').modal('show');
+            $('#followModal .modal-body').html(html);
         });
     });
 });
