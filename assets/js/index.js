@@ -189,23 +189,24 @@ async function DogCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
-        <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-          <div class="card-body p-4">
-            <div class="text-center">
-              <h5 class="fw-bolder">${article.article_title}</h5>
-              <label for="" class="category">${article.category}</label>
-              <hr>
-              <label for="" class="user">${article.user}</label>
-            </div>
-          </div>
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center">
-              <a class="btn me-2 btn_org" href="#">보러가기</a>
-            </div>
-          </div>
+    <div class="card h-100">
+      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+      <div class="card-body p-4">
+        <div class="text-center">
+          <h5 class="fw-bolder">${article.article_title}</h5>
+          <label for="" class="category">${article.category}</label>
+          <hr>
+          <label for="" class="user">${article.user}</label>
         </div>
-      `;
+      </div>
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center">
+          <a class="btn me-2 btn_org" href="#">보러가기</a>
+        </div>
+      </div>
+    </div>
+  `;
+
 
     petarticlesList.appendChild(articleCard);
   })
@@ -226,23 +227,23 @@ async function birdCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
-        <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-          <div class="card-body p-4">
-            <div class="text-center">
-              <h5 class="fw-bolder">${article.article_title}</h5>
-              <label for="" class="category">${article.category}</label>
-              <hr>
-              <label for="" class="user">${article.user}</label>
-            </div>
-          </div>
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center">
-              <a class="btn me-2 btn_org" href="#">보러가기</a>
-            </div>
-          </div>
+    <div class="card h-100">
+      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+      <div class="card-body p-4">
+        <div class="text-center">
+          <h5 class="fw-bolder">${article.article_title}</h5>
+          <label for="" class="category">${article.category}</label>
+          <hr>
+          <label for="" class="user">${article.user}</label>
         </div>
-      `;
+      </div>
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center">
+          <a class="btn me-2 btn_org" href="#">보러가기</a>
+        </div>
+      </div>
+    </div>
+  `;
 
     petarticlesList.appendChild(articleCard);
   })
@@ -264,23 +265,23 @@ async function fishCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
-        <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-          <div class="card-body p-4">
-            <div class="text-center">
-              <h5 class="fw-bolder">${article.article_title}</h5>
-              <label for="" class="category">${article.category}</label>
-              <hr>
-              <label for="" class="user">${article.user}</label>
-            </div>
-          </div>
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center">
-              <a class="btn me-2 btn_org" href="#">보러가기</a>
-            </div>
-          </div>
+    <div class="card h-100">
+      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+      <div class="card-body p-4">
+        <div class="text-center">
+          <h5 class="fw-bolder">${article.article_title}</h5>
+          <label for="" class="category">${article.category}</label>
+          <hr>
+          <label for="" class="user">${article.user}</label>
         </div>
-      `;
+      </div>
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center">
+          <a class="btn me-2 btn_org" href="#">보러가기</a>
+        </div>
+      </div>
+    </div>
+  `;
 
     petarticlesList.appendChild(articleCard);
   })
@@ -302,23 +303,23 @@ async function snailCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
-        <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-          <div class="card-body p-4">
-            <div class="text-center">
-              <h5 class="fw-bolder">${article.article_title}</h5>
-              <label for="" class="category">${article.category}</label>
-              <hr>
-              <label for="" class="user">${article.user}</label>
-            </div>
-          </div>
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center">
-              <a class="btn me-2 btn_org" href="#">보러가기</a>
-            </div>
-          </div>
+    <div class="card h-100">
+      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+      <div class="card-body p-4">
+        <div class="text-center">
+          <h5 class="fw-bolder">${article.article_title}</h5>
+          <label for="" class="category">${article.category}</label>
+          <hr>
+          <label for="" class="user">${article.user}</label>
         </div>
-      `;
+      </div>
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center">
+          <a class="btn me-2 btn_org" href="#">보러가기</a>
+        </div>
+      </div>
+    </div>
+  `;
 
     petarticlesList.appendChild(articleCard);
   })
@@ -340,23 +341,23 @@ async function stoneCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
-        <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-          <div class="card-body p-4">
-            <div class="text-center">
-              <h5 class="fw-bolder">${article.article_title}</h5>
-              <label for="" class="category">${article.category}</label>
-              <hr>
-              <label for="" class="user">${article.user}</label>
-            </div>
-          </div>
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center">
-              <a class="btn me-2 btn_org" href="#">보러가기</a>
-            </div>
-          </div>
+    <div class="card h-100">
+      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+      <div class="card-body p-4">
+        <div class="text-center">
+          <h5 class="fw-bolder">${article.article_title}</h5>
+          <label for="" class="category">${article.category}</label>
+          <hr>
+          <label for="" class="user">${article.user}</label>
         </div>
-      `;
+      </div>
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center">
+          <a class="btn me-2 btn_org" href="#">보러가기</a>
+        </div>
+      </div>
+    </div>
+  `;
 
     petarticlesList.appendChild(articleCard);
   })
@@ -378,24 +379,23 @@ async function turtleCategory() {
     // 아래 html이 반복되어 입력됨
     // 이미지의 경우 이미지 경로에 이미지가 있으면 보여주고 없을경우(?) 기본이미지를 가져옴..저희집 고양이 귀엽죠 여러분
     articleCard.innerHTML = `
-        <div class="card h-100">
-          <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
-          <div class="card-body p-4">
-            <div class="text-center">
-              <h5 class="fw-bolder">${article.article_title}</h5>
-              <label for="" class="category">${article.category}</label>
-              <hr>
-              <label for="" class="user">${article.user}</label>
-            </div>
-          </div>
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center">
-              <a class="btn me-2 btn_org" href="#">보러가기</a>
-            </div>
-          </div>
+    <div class="card h-100">
+      <img class="card-img-top" src="${article.article_image ? article.article_image : './assets/images/IMG_8257.jpg'}" alt="" />
+      <div class="card-body p-4">
+        <div class="text-center">
+          <h5 class="fw-bolder">${article.article_title}</h5>
+          <label for="" class="category">${article.category}</label>
+          <hr>
+          <label for="" class="user">${article.user}</label>
         </div>
-      `;
-
+      </div>
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center">
+          <a class="btn me-2 btn_org" href="#">보러가기</a>
+        </div>
+      </div>
+    </div>
+  `;
     petarticlesList.appendChild(articleCard);
   })
 
