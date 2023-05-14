@@ -3,7 +3,6 @@ const backend_base_url = "http://127.0.0.1:8000"
 
 $(document).ready(async function () {
 
-    console.log("api.js 로딩")
 
     let urlParam = new URLSearchParams(window.location.search);
     let user_id = urlParam.get('user_id');

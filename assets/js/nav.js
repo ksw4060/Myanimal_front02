@@ -6,7 +6,7 @@ const payload = localStorage.getItem("payload");
 const payload_parse = JSON.parse(payload)
 
 const intro = document.getElementById("intro")
-intro.innerText = `${payload_parse.account}님 안녕하세요`
+intro.innerText = `${payload_parse.nickname}님 안녕하세요`
 
 
 let navbarRight = document.getElementById("navbar-right")

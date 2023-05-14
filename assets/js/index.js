@@ -134,7 +134,6 @@ window.onload = async function loadArticles() {
 //고양이 api 가져오기
 async function CatCategory() {
   const petarticles = await getCatArticles();
-
   const petarticlesList = document.getElementById('article-list');
   petarticlesList.innerHTML = ''; // 기존에 표시된 게시글 초기화
 

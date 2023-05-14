@@ -1,4 +1,8 @@
-window.onload = fetch(`${backend_base_url}/hearts/`, {
+const frontend_base_url = "http://127.0.0.1:5500"
+const backend_base_url = "http://127.0.0.1:8000"
+
+
+window.onload = fetch(`${backend_base_url}/articles/hearts/`, {
     headers: {
         "Authorization": "Bearer " + localStorage.getItem("access")
     }
@@ -12,7 +16,6 @@ window.onload = fetch(`${backend_base_url}/hearts/`, {
         let category = a['category']
         let user = a['user']
         let id = a['id']
-
         let temp_html = `<div class="col mb-5">
                 <div class="card h-100">
                     <img class="card-img-top" src="${img}" alt="..." />

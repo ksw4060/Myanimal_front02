@@ -13,59 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="/assets/js/index.js"></script>
     <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/hearts_article.js"></script>
 
-    <script>
-        window.onload = () => {
-            $('#article-box').empty()
-            $.ajax({
-                type: "GET",
-                // 로그인 기능 완료 되면 url 수정 http://127.0.0.1:8000/articles/hearts/
-                url: "http://127.0.0.1:8000/articles/",
-                data: {},
-                success: function (response) {
-                    let rows = response
-                    for (let i = 0; i < rows.length; i++) {
-                        let title = rows[i]['article_title']
-                        let content = rows[i]['article_content']
-                        let img = rows[i]['article_img']
-                        let category = rows[i]['category']
-                        let hearts = rows[i]['hearts']
-                        let bookmarks = rows[i]['bookmarks']
-                        let created_at = rows[i]['article_created_at']
-                        let updated_at = rows[i]['article_updated_at']
-                        let user = rows[i]['user']
-                        let id = rows[i]['id']
-
-                        let temp_html = `<div class="col mb-5">
-                    <div class="card h-100">
-                        <!-- 포스트 이미지를 가져오는 곳-->
-                        <img class="card-img-top" src="${img}">
-                        <!-- 포스팅 카드가 보여지는 곳-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- 게시글 title-->
-                                <h5 class="fw-bolder">${title}</h5>
-                                <!-- 게시글 작성자-->
-                                <label for="" class="">${category}</label>
-                                <hr>
-                                <label for="" class="">${user}</label>
-                            </div>
-                        </div>
-                        <!-- 보러가기 버튼-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn me-2 btn_org"
-                                    href="http://127.0.0.1:8000/articles/${id}/">보러가기</a></div>
-                        </div>
-                    </div>
-                </div>`
-                        $('#article-box').append(temp_html)
-                    }
-                }
-            })
-        }
-
-
-    </script>
+    
 
 </head>
 
@@ -93,28 +43,7 @@
                 class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <!-- {% for post in page_obj %} -->
                 <!--페이지 오브젝트에서 포스트를 불러오는 것-->
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <!-- 포스트 이미지를 가져오는 곳-->
-                        <img class="card-img-top" src="{{ post.image.url }}" alt="..." />
-                        <!-- 포스팅 카드가 보여지는 곳-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- 게시글 title-->
-                                <h5 class="fw-bolder">{{ post.title }}</h5>
-                                <!-- 게시글 작성자-->
-                                <label for="" class="">{{ post.region }}</label>
-                                <hr>
-                                <label for="" class="">{{ post.user }}</label>
-                            </div>
-                        </div>
-                        <!-- 보러가기 버튼-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn me-2 btn_org"
-                                    href="{% url 'post' id=post.id %}">보러가기</a></div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
