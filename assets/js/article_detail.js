@@ -21,7 +21,7 @@ async function ArticleDetail(article_id) {
 
     const category = document.querySelector('#category');
     // 딱히 안써도 가져와지는것같아서 주석처리했습니댜
-    // const author = document.querySelector('#author');
+    const author = document.querySelector('#author');
     const article_title = document.querySelector('#article-title');
     const article_created_at = document.querySelector('#article-created-at');
     const article_updated_at = document.querySelector('#article-updated-at');
