@@ -13,7 +13,6 @@ let navbarRight = document.getElementById("navbar-right")
 let newLi = document.createElement("li")
 newLi.setAttribute("class", "nav-item")
 
-
 let logoutBtn = document.createElement("button")
 logoutBtn.setAttribute("class", "nav-link btn")
 logoutBtn.innerText = "로그아웃"
@@ -28,4 +27,5 @@ loginbtn.style.display = "none";
 
 let signupbtn = document.getElementById("signup-btn")
 signupbtn.style.display = "none";
+
 

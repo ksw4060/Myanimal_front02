@@ -12,7 +12,7 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
 
-
+    <link href="/assets/css/create_article.css" rel="stylesheet">
     <script src="assets/js/article.js"></script>
     <script src="/assets/js/base.js"></script>
 
@@ -27,26 +27,15 @@
     <div id="navbar-container"></div>
 
 
-
-    <div class="main">
-        <section>
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-6">
-                    </div>
-                </div>
-            </div>
-    </div>
-    <hr>
-    <div style="width: 1200px; display: flex;
+    <div id="글작성,미리보기 묶어놓은것." style="width: 1200px; display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center; margin: auto;">
-        <div style="width: 95%;
+    justify-content: center; margin: auto; ">
+        <div id="글작성하기 부분." class="create" style="width: 95%;
         max-width: 500px;
         padding: 20px;
-        box-shadow: 0px 0px 3px 0px gray;">
-            <div class="input-group mb-3" style="width: 300px; margin-top: 10px;">
+        box-shadow: 0px 0px 3px 0px gray; border-radius: 10px;">
+            <div class="input-group mb-3" style="width: 300px; margin-top: 10px; ">
                 <label class="input-group-text" for="inputGroupSelect01">카테고리</label>
                 <select class="form-select" id="category">
                     <option selected>--선택--</option>
@@ -61,20 +50,21 @@
             </div>
             <div style="margin-bottom: 10px;" class="input-group input-group-lg">
                 <span class="input-group-text">제목</span>
-                <input id="title" type="text" class="form-control" aria-label="Sizing example input"
+                <input id="title" type="text" class="form-control" style="background-color: #fff8ef;" aria-label="Sizing example input"
                     aria-describedby="inputGroup-sizing-lg">
             </div>
             <div class="input-group mb-3">
                 <form id="imgForm">
-                    <input type="file" class="form-control" id="myFile" onchange="setThumbnail(event);">
+                    <input type="file" value="none" class="form-control" id="myFile" style="background-color: rgb(220, 226, 255);" onchange="setThumbnail(event);">
             </div>
             <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="content"
-                    style="height: 300px"></textarea>
+                    style="height: 300px; background-color: #fff8ef;"></textarea>
                 <label for="floatingTextarea2">내용</label>
             </div>
         </div>
-        <div style="width: 500px; height: 518px; box-shadow: 0px 0px 3px 0px gray; margin:auto;">
+
+        <div style="width: 500px; height: 518px; box-shadow: 0px 0px 3px 0px gray; margin:auto; border-radius: 10px;">
 
             <!-- 0514 17:40 채연수정 : 이미지 미리보기 태그/함수 생성 및 기본이미지 삭제 -->
             <div id="imgthumbnail"></div>
@@ -84,9 +74,9 @@
         </div>
     </div>
     <div style="width: 358px; margin: 20px auto 0 auto;">
-        <button id="save-article" style="margin-right: 50px;" type="button" class="btn btn-primary btn-lg"
+        <button id="save-article" style="margin-right: 50px; border: white; color: black;  background-color: rgb(220, 226, 255);" type="button" class="btn btn-primary btn-lg"
             onclick="save_article()">등록</button>
-        <button type="button" class="btn btn-secondary btn-lg">돌아가기</button>
+        <button onclick="location.href='/'" type="button" class="btn btn-secondary btn-lg" style="border: white; color: black;  background-color: rgb(220, 226, 255);">돌아가기</button>
     </div>
 
 
