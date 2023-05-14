@@ -20,11 +20,15 @@ async function ArticleDetail(article_id) {
     console.log(response_json)
 
     const category = document.querySelector('#category');
-    const author = document.querySelector('#author');
+    // const author = document.querySelector('#author');
     const article_title = document.querySelector('#article-title');
     const article_created_at = document.querySelector('#article-created-at');
     const article_updated_at = document.querySelector('#article-updated-at');
     const article_content = document.querySelector('#article-content');
+    //백 이미지 링크를 통해 가져오도록 햇습니댜
+    const article_img_url = `${backend_base_url}${response_json.article_img}`;
+    const article_img_element = document.getElementById("article_img")
+    console.log(article_img_element)
 
     // const detail_product_img_url = `${BACKEND_API}/${response_json.image}`
 
@@ -35,6 +39,7 @@ async function ArticleDetail(article_id) {
     article_created_at.innerText = response_json.article_created_at
     article_updated_at.innerText = response_json.article_updated_at
     article_content.innerText = response_json.article_content
+    article_img_element.setAttribute("src", article_img_url)
 
 }
 
