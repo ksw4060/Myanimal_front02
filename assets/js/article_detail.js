@@ -29,7 +29,7 @@ async function ArticleDetail(article_id) {
     //백 이미지 링크를 통해 가져오도록 햇습니댜
     const article_img_url = `${backend_base_url}${response_json.article_img}`;
     const article_img_element = document.getElementById("article_img")
-    console.log(article_img_element)
+    // console.log(article_img_element)
 
     // const detail_product_img_url = `${BACKEND_API}/${response_json.image}`
     // detail_product_img.setAttribute('src', detail_product_img_url)
