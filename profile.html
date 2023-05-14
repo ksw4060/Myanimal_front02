@@ -113,27 +113,23 @@
                             </div>
                             <div class="row row-cols-xs-1 row-cols-sm-2 justify-content-center"
                                 style="background-color: #F08080;">
-                                <div class="col" style="background-color: #FF00FF;">
-                                    <div class="card" style="background-color: #ffeed9; border:0px;">
-                                        <div id="followings-box">팔로잉:
-                                            <span id="followings" class="text-decoration-underline text-danger">팔로잉
-                                                수</span>
-                                        </div>
-                                        <div id="followers-box">팔로워:
-                                            <span id="followers" class="text-decoration-underline text-primary">팔로워
-                                                수</span>
-                                        </div>
+                                <div class="col card" style="background-color: #FF00FF;">
+                                    <div id="followings-box">팔로잉:
+                                        <span id="followings" class="text-decoration-underline text-danger">팔로잉
+                                            수</span>
+                                    </div>
+                                    <div id="followers-box">팔로워:
+                                        <span id="followers" class="text-decoration-underline text-primary">팔로워
+                                            수</span>
                                     </div>
                                 </div>
-                                <div class="col" style="background-color: #00FF00;">
-                                    <div class="card" style="background-color: #ffeed9; border:0px;">
-                                        <div>좋아요한 게시글:
-                                            <a href="./hearts_article.html" id="hearted_articles_count">좋아요한 게시글 수</a>
-                                        </div>
-                                        <div>북마크한 게시글:
-                                            <a href="./bookmark_article.html" id="bookmarked_articles_count">북마크한 게시글
-                                                수</a>
-                                        </div>
+                                <div class="col card" style="background-color: #00FF00;">
+                                    <div>좋아요한 게시글:
+                                        <a href="./hearts_article.html" id="hearted_articles_count">좋아요한 게시글 수</a>
+                                    </div>
+                                    <div>북마크한 게시글:
+                                        <a href="./bookmark_article.html" id="bookmarked_articles_count">북마크한 게시글
+                                            수</a>
                                     </div>
                                 </div>
                             </div>
@@ -158,6 +154,23 @@
     <div id="footer-container"></div>
     <!-- 하단 푸터 끝-->
 
+
+    <!-- 모달(내용이 많으면 스크롤도 됨) -->
+    <div class="modal fade " id="followModal" tabindex="-1" aria-labelledby="followModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="followModalLabel">모달</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
