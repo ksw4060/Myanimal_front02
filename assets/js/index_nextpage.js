@@ -1,11 +1,9 @@
-console.log("찍힘")
 
 async function nextPage() {
     const response = await fetch(`${backend_base_url}/articles/pagination/?page=2`);
     const data = await response.json();
     // 페이지네이션한 게시글들은 object객체로 받아옴 해당 객체를 배열로 만들고 null값은 건너뛰어서 오류발생 활률을 낮춤
     const articles = Array.isArray(data) ? data : Object.values(data).filter(article => article != null);
-    console.log(articles)
 
 
 

@@ -4,7 +4,6 @@
 //비밀번호 찾기
 async function handleResetPassword() {
     const email = document.getElementById("reset_password").value
-    console.log(email)
 
     const response = await fetch(`${backend_base_url}/users/auth/password/reset/`, {
         headers: {
@@ -36,7 +35,6 @@ async function Set_Password() {
     const urlParams = new URLSearchParams(window.location.search);
     const uidb64 = urlParams.get('id').replace(/'/g, '').replace('$b', '');
     const token = urlParams.get('token').replace('$', '');
-    console.log(uidb64, token)
     const response = await fetch(`${backend_base_url}/users/auth/password/reset/confirm/`, {
         headers: {
             'Content-type': 'application/json',
@@ -44,7 +42,6 @@ async function Set_Password() {
         method: 'PUT',
         body: JSON.stringify({ "password": password, "repassword": repassword, "uidb64": uidb64, "token": token })
     })
-    console.log(urlParams, uidb64)
     const result = await response.json()
     if (response.status === 200) {
         alert(result["message"])

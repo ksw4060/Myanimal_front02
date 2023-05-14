@@ -7,7 +7,9 @@ async function handleLogout() {
     localStorage.removeItem("payload")
     location.replace('index.html')
 }
-
+async function handlecreatearticle() {
+    location.href='create_article.html'
+}
 
 
 // 상단 네비바, 푸터 가져오기
@@ -43,6 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     logoutBtn.setAttribute("class", "nav-link btn");
                     logoutBtn.innerText = "로그아웃";
                     logoutBtn.setAttribute("onclick", "handleLogout()");
+
+                    let createarticle = document.getElementById("create-article");
+                    createarticle.innerText = "글쓰기";
+                    createarticle.setAttribute("class", "nav-link btn")
+                    createarticle.setAttribute('onclick', 'handlecreatearticle()');
 
                     newLi.appendChild(logoutBtn);
 

@@ -4,7 +4,6 @@ const payload = localStorage.getItem("payload");
 
 
 const payload_parse = JSON.parse(payload)
-console.log(payload_parse.account)
 
 const intro = document.getElementById("intro")
 intro.innerText = `${payload_parse.account}님 안녕하세요`
@@ -13,7 +12,6 @@ intro.innerText = `${payload_parse.account}님 안녕하세요`
 let navbarRight = document.getElementById("navbar-right")
 let newLi = document.createElement("li")
 newLi.setAttribute("class", "nav-item")
-
 
 let logoutBtn = document.createElement("button")
 logoutBtn.setAttribute("class", "nav-link btn")
@@ -29,4 +27,5 @@ loginbtn.style.display = "none";
 
 let signupbtn = document.getElementById("signup-btn")
 signupbtn.style.display = "none";
+
 
