@@ -31,7 +31,7 @@ async function ArticleDetail(article_id) {
     // const detail_product_img_url = `${BACKEND_API}/${response_json.image}`
     // detail_product_img.setAttribute('src', detail_product_img_url)
     category.innerText = response_json.category
-    author.innerText = response_json.user
+    author.innerHTML = `<a style="text-decoration:none; color:black;" href = "http://127.0.0.1:5500/profile.html?user_id=${response_json.user.pk}">${response_json.user.nickname}</a>`
     article_title.innerText = response_json.article_title
     article_created_at.innerText = response_json.article_created_at
     article_updated_at.innerText = response_json.article_updated_at
@@ -110,10 +110,11 @@ async function loadComments(article_id) {
         commentList.insertAdjacentHTML('beforeend', `
         
         <div  class="card-header">
-                <a>${comment.user}</a>
+        
+                <a style="text-decoration:none; color:black;" href = "http://127.0.0.1:5500/profile.html?user_id=${comment.user.pk}">${comment.user.nickname}</a>
             </div>
             <div id="comment-${comment.id}" class="card-body" style="max-width: 1000px;">
-                <div class="row g-5">
+                <div class="row g-5" style ="margin-top:0px;">
                     <!-- 유저 프로필 사진 -->
                     <div class="col-md-4" style="width: 200px;">
                         <img src="https://i.ibb.co/Ssm90Cq/4164335-1582361978747.gif" class="img-fluid rounded-start"
