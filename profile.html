@@ -36,21 +36,21 @@
     <!-- 상단 네비게이션바 -->
     <div id="navbar-container"></div>
 
-    <!-- 로그인한 작성자 -->
+    <!-- 로그인한 작성자 수정 기능 -->
     <div class="permission">
         <button id="edit-btn" class="btn btn-warning">수정</button>
-        <button id="withdrawal-btn" class="btn btn-danger">탈퇴</button>
-        <button id="withdrawal2-btn" class="btn btn-danger withdrawal">탈퇴</button>
-        <button id="cancel-withdrawal-btn" class="btn btn-secondary withdrawal">취소</button>
         <button id="cancel-btn" class="hidden btn btn-secondary">취소</button>
         <!-- <button class="hidden btn btn btn-dark" id="confirm-btn" onclick="putProfile()">완료</button> -->
         <button class="hidden btn btn btn-dark" id="confirm-btn">완료</button>
-
-        <div class="form-floating withdrawal">
-            <input type="password" class="form-control" id="password-input" placeholder="비밀번호">
-            <label for="floatingPassword">비밀번호</label>
-        </div>
     </div>
+    <!-- 로그인 한 다른 사람 -->
+    <div class="permission2">
+        <button id="follow-btn" type="button" class="btn btn-primary">팔로우하기</button>
+        <button id="following-btn" type="button" class="btn btn-success">팔로잉</button>
+        <!-- 하얀 팔로잉 버튼 이걸 호버하면 누르면 언팔로우 뜨게 -->
+        <button id="unfollow-btn" type="button" class="btn btn-info">언팔로우</button>
+    </div>
+
     <div class="container text-center">
         <!-- <h1>프로필 상세 페이지</h1> -->
         <div class="row row-cols-1 row-cols-md-2" id="profile">
@@ -138,13 +138,17 @@
                 </div>
             </div>
 
-            <!-- 로그인 한 다른 사람 -->
-            <div class="permission2">
-                <button id="follow-btn" type="button" class="btn btn-primary">팔로우하기</button>
-                <button id="following-btn" type="button" class="btn btn-success">팔로잉</button>
-                <!-- 하얀 팔로잉 버튼 이걸 호버하면 누르면 언팔로우 뜨게 -->
-                <button id="unfollow-btn" type="button" class="btn btn-info">언팔로우</button>
+            <!-- 로그인한 작성자 탈퇴 기능 -->
+            <div class="permission">
+                <button id="withdrawal-btn" class="btn btn-danger">탈퇴</button>
+                <button id="withdrawal2-btn" class="btn btn-danger withdrawal">탈퇴</button>
+                <button id="cancel-withdrawal-btn" class="btn btn-secondary withdrawal">취소</button>
+                <div class="form-floating withdrawal">
+                    <input type="password" class="form-control" id="password-input" placeholder="비밀번호">
+                    <label for="floatingPassword">비밀번호</label>
+                </div>
             </div>
+
             <!-- 하단 푸터 시작-->
             <div id="footer-container"></div>
             <!-- 하단 푸터 끝-->
