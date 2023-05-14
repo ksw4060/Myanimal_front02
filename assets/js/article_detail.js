@@ -20,6 +20,7 @@ async function ArticleDetail(article_id) {
     console.log(response_json)
 
     const category = document.querySelector('#category');
+    // 딱히 안써도 가져와지는것같아서 주석처리했습니댜
     // const author = document.querySelector('#author');
     const article_title = document.querySelector('#article-title');
     const article_created_at = document.querySelector('#article-created-at');
@@ -31,7 +32,6 @@ async function ArticleDetail(article_id) {
     console.log(article_img_element)
 
     // const detail_product_img_url = `${BACKEND_API}/${response_json.image}`
-
     // detail_product_img.setAttribute('src', detail_product_img_url)
     category.innerText = response_json.category
     author.innerText = response_json.user
@@ -39,6 +39,7 @@ async function ArticleDetail(article_id) {
     article_created_at.innerText = response_json.article_created_at
     article_updated_at.innerText = response_json.article_updated_at
     article_content.innerText = response_json.article_content
+    //이미지 스크린에 아티클 이미지 url들을 각각 불러오도록 했습니댜
     article_img_element.setAttribute("src", article_img_url)
 
 }
