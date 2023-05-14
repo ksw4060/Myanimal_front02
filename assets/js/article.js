@@ -9,7 +9,6 @@ async function save_article() {
     const category = document.getElementById("category").value
     const img = document.getElementById("myFile").files[0]
     const token = localStorage.getItem("access")
-    console.log(img.name)
 
     //JSON.stringify는 이미지파일 보내기가 안된다고 합니댜
     //그래서 formData형식으로 이미지파일을 보내는것으로 수정햇습니댜 
