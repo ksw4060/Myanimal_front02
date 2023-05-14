@@ -26,10 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // base-nav.html이 로드된 후에 intro 태그와 기타 작업을 수행
                 const payload = localStorage.getItem("payload");
-
-
                 const payload_parse = JSON.parse(payload)
-                console.log(payload_parse.account)
 
                 const intro = document.getElementById("intro");
                 if (intro) {

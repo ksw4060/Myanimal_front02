@@ -1,6 +1,5 @@
-console.log('프로필 js 로딩');
-
 $(document).ready(async function () {
+    console.log('프로필 js 로딩');
     $('.hidden').hide();
     $('.permission').hide();
     $('.permission2').hide();
@@ -17,16 +16,44 @@ $(document).ready(async function () {
         const payload = localStorage.getItem("payload");
         const payload_parse = JSON.parse(payload)
 
-        const me_id = payload_parse.user_id;
         const token = localStorage.getItem("access");
+        const me_id = payload_parse.user_id;
+        const account = payload_parse.account;
 
-        // 접속 유저와 프포필 유저가 같다면?
+        // 접속 유저와 프로필 유저가 같다면?
         if (me_id == user_id) {
             $('.permission').show();
         } else {
+            // 다른 사용자 라면
             $('.permission2').show();
+            $('#unfollow-btn').hide();
+
+            response.followers.includes(account)
+            const isAccountInArray = response.followers.includes(account);
+
+            if (isAccountInArray) {
+                // 팔로우가 되어 있다면
+                $('#follow-btn').hide(); // '팔로우하기'를 숨김.
+                $('#following-btn').show(); // '팔로잉'을 보여줌.
+            }
+            else {
+                // 팔로우가 되어 있지 않다면
+                $('#follow-btn').show(); // '팔로우하기'를 보여줌.
+                $('#following-btn').hide(); // '팔로잉'을 숨김.
+            }
         }
     }
+    // 로그인이 되어 있어야하고
+    // 내가 저사람을 팔로우 했는지 안했는지 확인을 한다음에
+    // 팔로잉 안되어 있으면 <팔로우 하기> 버튼이 보이게
+    // 팔로잉 되어 있으면 <팔로잉> 버튼이 보이게
+
+    // <팔로우하기> 버튼을 누르면
+    // 팔로우가 되면서 <팔로우하기> 버튼이 사라지고, <팔로잉>버튼이 생기게
+
+    // 팔로잉 버튼을 hover하면 언팔로우 뜨게 하고
+    // 언팔로우 버튼을 누르면
+    // 언팔로우 되면서 <팔로잉> 버튼 사라지고 <팔로우 하기> 버튼 보이게
 
     // 프로필 이미지 처리
     const profileImage = $('#profile-image');
@@ -42,8 +69,6 @@ $(document).ready(async function () {
     // newImage.css({ width: '80%', height: '80%' });
     // profileImage.append(newImage);
 
-    console.log(response.profile_img);
-    console.log('테스트');
     if (response.profile_img == '' || response.profile_img == null || typeof response.profile_img === 'undefined') {
         $('#img').attr('src', 'https://blog.kakaocdn.net/dn/0WCOh/btsftHK9GZz/zWlQWK1gtgPiD0zTWIefek/img.gif');
     } else {
@@ -96,7 +121,6 @@ $(document).ready(async function () {
 
     // 수정 버튼 클릭 시
     $('#edit-btn').click(function () {
-        // console.log('히든 보이게')
         $('.hidden').show();
 
         $('#withdrawal-btn').hide();
@@ -106,7 +130,6 @@ $(document).ready(async function () {
 
     // 취소 버튼 클릭 시
     $('#cancel-btn').click(function () {
-        // console.log('히든 숨기기')
         $('.hidden').hide();
         $('#withdrawal-btn').show();
         $('#edit-btn').show();
@@ -163,7 +186,6 @@ $(document).ready(async function () {
 
     // 이미지 띄우기, 아직 업로드X
     $('#image-input').click(function () {
-        console.log('이미지 띄우기');
         $('#image-input').change(function () {
             var file = this.files[0];
             var reader = new FileReader();
@@ -255,8 +277,8 @@ $(document).ready(async function () {
         }
     });
 
-    // 팔로우 버튼을 누른다면?
-    $('#follow-btn').click(async function () {
+    // (언)팔로우 버튼을 누른다면?
+    $('#follow-btn, #unfollow-btn').click(async function () {
         const response = await $.ajax({
             url: `${backend_base_url}/users/follow/${user_id}/`,
             method: 'POST',
@@ -267,26 +289,25 @@ $(document).ready(async function () {
                 // localStorage.getItem("access")
             },
             success: function (response) {
-                alert('성공적으로 팔로우/언팔 처리되었습니다.');
-                // location.href = '/';
+                alert(response);
+                // 알람과 새로고침 없이 적용을 해보자.
+                location.reload();
             },
             // 비밀번호가 일치 하지 않거나 비활성화한 사용자일 경우
             error: function (error) {
-                alert('문제가 생긴 듯', error);
-                // location.reload();
+                alert('팔로우 기능에 문제가 생겼습니다!', error);
+                window.location.href = "404.html";
             }
         });
     });
 
-    // $('.content').mouseenter(function () {
-    //     $('#original-content').hide();
-    //     $('#hover-content').show();
-    // });
-    // $('.content').mouseleave(function () {
-    //     $('#hover-content').fadeOut(1000, function () {
-    //         $('#original-content').fadeIn(1000);
-    //     });
-    // });
+    $('#following-btn').on('mouseenter', function () {
+        $('#unfollow-btn').show();
+        $('#following-btn').hide();
+    });
 
-
+    $('#unfollow-btn').on('mouseleave', function () {
+        $('#unfollow-btn').hide();
+        $('#following-btn').show();
+    });
 });
