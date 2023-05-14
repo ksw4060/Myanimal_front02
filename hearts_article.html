@@ -43,28 +43,7 @@
                 class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <!-- {% for post in page_obj %} -->
                 <!--페이지 오브젝트에서 포스트를 불러오는 것-->
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <!-- 포스트 이미지를 가져오는 곳-->
-                        <img class="card-img-top" src="{{ post.image.url }}" alt="..." />
-                        <!-- 포스팅 카드가 보여지는 곳-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- 게시글 title-->
-                                <h5 class="fw-bolder">{{ post.title }}</h5>
-                                <!-- 게시글 작성자-->
-                                <label for="" class="">{{ post.region }}</label>
-                                <hr>
-                                <label for="" class="">{{ post.user }}</label>
-                            </div>
-                        </div>
-                        <!-- 보러가기 버튼-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn me-2 btn_org"
-                                    href="{% url 'post' id=post.id %}">보러가기</a></div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
