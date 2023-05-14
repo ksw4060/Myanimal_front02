@@ -3,14 +3,13 @@ console.log('프로필 js 로딩');
 $(document).ready(async function () {
     $('.hidden').hide();
     $('.permission').hide();
+    $('.permission2').hide();
     $('.withdrawal').hide();
 
     let urlParam = new URLSearchParams(window.location.search);
     let user_id = urlParam.get('user_id');
-    console.log(user_id);
 
     const response = await getProfile(user_id);
-    console.log(response)
 
     // 로그인 되어 있다면?
     if (localStorage.getItem("payload")) {
@@ -19,15 +18,14 @@ $(document).ready(async function () {
         const payload_parse = JSON.parse(payload)
 
         const me_id = payload_parse.user_id;
-        // console.log(me_id)
-
         const token = localStorage.getItem("access");
-        // console.log(token)
 
         // 접속 유저와 프포필 유저가 같다면?
         if (me_id == user_id) {
             $('.permission').show();
-        };
+        } else {
+            $('.permission2').show();
+        }
     }
 
     // 프로필 이미지 처리
@@ -194,34 +192,19 @@ $(document).ready(async function () {
         })
     });
 
-
-    // await을 쓰려면 이렇게?
-    // const response4 = await function putProfile();
-
-
-    //  권한이 있는지 있으면 그걸로 보내야하는데...
-    // 페이로드에서 뽑아서?
-    // 파일만 변경이 안됨.
     $('#confirm-btn').click(async function () {
         // 선택한 이미지 파일 가져오기
-        console.log("유저아이디??");
-        console.log(user_id);
         var imageFile = $('#image-input')[0].files[0];
-        console.log("이미지파일");
-        console.log(imageFile);
 
         // 선택한 카테고리 값 가져오기
         var selectedCategory = $('#mySelect').val();
-        console.log("셀렉트 값");
-        console.log(selectedCategory);
 
+        // 닉네임 값 가져오기
         var myNickname = $('#myNickname').val();
-        console.log("닉네임 값");
-        console.log(myNickname);
-
 
         // FormData 객체 생성
         var formData = new FormData();
+
         // 이미지가 있으면 추가
         if (imageFile) {
             formData.append('profile_img', imageFile);
@@ -270,8 +253,10 @@ $(document).ready(async function () {
                 // alert(textStatus)
             }
         }
-
     });
+
+    // 팔로우 버튼을 누른다면? 아직 수정 안함.
+
 
     // $('.content').mouseenter(function () {
     //     $('#original-content').hide();

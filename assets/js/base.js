@@ -35,7 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (intro) {
                     const payload = localStorage.getItem("payload");
                     const payload_parse = JSON.parse(payload);
-                    intro.innerText = `${payload_parse.account}님 안녕하세요`;
+                    intro.innerText = `${payload_parse.nickname}님 안녕하세요`;
+                    intro.href = `${frontend_base_url}/profile.html?user_id=` + payload_parse.user_id;
 
                     let navbarRight = document.getElementById("navbar-right");
                     let newLi = document.createElement("li");

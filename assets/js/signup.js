@@ -37,7 +37,7 @@ async function handleSignupButton() {
 
     if (response.status == 201) {
         alert("이메일 발송 완료. 이메일 인증 후 회원가입을 완료해주세요")
-        window.location.replace(`${frontend_base_url}/login.html`)
+        window.location.replace(`/login.html`)
     }
     
 }
