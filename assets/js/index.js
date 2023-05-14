@@ -91,7 +91,7 @@ window.onload = async function loadArticles() {
           <h5 class="fw-bolder">${title}</h5>
           <label for="" class="category">${category}</label>
           <hr>
-          <label for="" class="user">${payload_parse.account}</label>
+          <label for="" class="user">${article.user}</label>
             </div>
           </div>
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
